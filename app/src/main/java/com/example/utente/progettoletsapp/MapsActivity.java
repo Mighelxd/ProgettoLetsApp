@@ -10,6 +10,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,10 +26,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     DrawerLayout lmenu;
+    ListView menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        String opzioniMenu[]={"Impostazioni","ETC"};
+        lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
+        menu = (ListView) findViewById(R.id.menuLaterale);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -35,18 +40,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
     }
 
     public void buttonClicked(View v) {
         lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
         switch (v.getId()) {
-            //Apre il menu laterale
+            //Apre il drawer_menu laterale
             case R.id.bMenu:
                 lmenu.openDrawer(Gravity.LEFT);
                 break;
+            //Premuto il tasto di ricerca
             case R.id.bSearch:
                 Toast.makeText(this, "Premmuto ricerca", Toast.LENGTH_SHORT).show();
                 break;
+            //Premuto il tasto di salvataggio
             case R.id.bSave:
                 Toast.makeText(this, "Premuto salva", Toast.LENGTH_SHORT).show();
                 break;
