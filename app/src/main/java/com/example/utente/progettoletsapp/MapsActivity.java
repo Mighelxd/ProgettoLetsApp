@@ -55,19 +55,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    public void itemClicked(View v) {
-        switch (v.getId()) {
-            case R.id.item1:
-                Toast.makeText(this, "Cliccato primo tasto menu", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.item2:
-                Toast.makeText(this, "Cliccato primo tasto menu", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.item3:
-                Toast.makeText(this, "Cliccato primo tasto menu", Toast.LENGTH_SHORT).show();
-                break;
-        }
-    }
 
     /**
      * Manipulates the map once available.
