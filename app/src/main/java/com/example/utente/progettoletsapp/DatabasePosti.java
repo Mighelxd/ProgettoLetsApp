@@ -25,7 +25,7 @@ public class DatabasePosti extends SQLiteOpenHelper {
         String tabSTipo="CREATE TABLE sottotipo(" +
                 "codice INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "descrizione TEXT NOT NULL," +
-                "cod_tipo INTEGER NOT NULL," +
+                "cod_tipo INTEGER," +
                 "FOREIGN KEY(cod_tipo) REFERENCES tipo(codice));";
         String tabPosto="CREATE TABLE posto(" +
                 "codice INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -36,10 +36,22 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "Nstelle INTEGER," +
                 "cod_Stipo INTEGER NOT NULL," +
                 "FOREIGN KEY(cod_Stipo) REFERENCES sottotipo(codice));";
+        String insTipo="INSERT INTO tipo (descrizione) VALUES" +
+                "('Locale dove mangiare'),('Locale dove ballere'),('Locale dove bere')," +
+                "('Luogo storico/culturale'),('parcheggio'),('negozio'),('svago'),('altro');";
+        String insSTipo="INSERT INTO sottotipo (descrizione,cod_tipo) VALUES" +
+                "('Pistorante',1),('Pub',1),('Pizzeria',1),('Ristorante/Pizzeria',1),('Paninoteca',1),('Fastfood',1)," +
+                "('Discoteca',2),('Disco-bar',2)," +
+                "('Bar',3),('Lounge-bar',3),('Enoteca',3)," +
+                "('Museo',4),('Biblioteca',4),('Statua',4),('Palazzo',4),('Castello',4)," +
+                "('Supermercato',6),('Macelleria',6),('Pescheria',6),('Salumeria',6),('Libreria',6),('Negozio abbigliamento',6)," +
+                "('Cinema',7),('Sala gioghhi',7),('Centro scommesse',7),('Centro Sportivo',7);";
 
         db.execSQL(tabTipo);
         db.execSQL(tabSTipo);
         db.execSQL(tabPosto);
+        db.execSQL(insTipo);
+        db.execSQL(insSTipo);
     }
 
     @Override
