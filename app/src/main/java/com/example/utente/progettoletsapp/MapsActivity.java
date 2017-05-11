@@ -46,9 +46,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         NavigationView.OnNavigationItemSelectedListener ls=new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 return true;
             }
         };
+        menu.setNavigationItemSelectedListener(ls);
     }
 
     public void buttonClicked(View v) {
