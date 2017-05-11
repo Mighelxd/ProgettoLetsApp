@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:padding="10dp" android:layout_height="190dp"
-    android:background="#00FF00" android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:background="#00FF00"
+    android:orientation="vertical">
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CIAO"
-        android:textSize="50sp"
-        android:textColor="#000000"
+        android:text="La mia APP"
+        android:textSize="50dp"
+        android:textColor="#000"
         android:textStyle="bold"
         android:gravity="center_horizontal"
-        android:id="@+id/txt1"/>
+        android:paddingTop="15dp"
+        android:id="@+id/txt1" />
 
 </RelativeLayout>
