@@ -3,18 +3,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/inbox"
+            android:id="@+id/item1"
             android:checked="false"
-            android:title="Nuove Richieste"/>
+            android:title="Nuove Richieste" />
 
         <item
-            android:id="@+id/preferiti"
+            android:id="@+id/item2"
             android:checked="false"
             android:title="Preferiti" />
 
         <item
-            android:id="@+id/imp"
+            android:id="@+id/item3"
             android:checked="false"
-            android:title="Impostazioni" />
+            android:title="Impostazioni"
+            />
     </group>
 </menu>
