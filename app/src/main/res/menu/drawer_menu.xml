@@ -13,8 +13,8 @@
             android:title="Preferiti" />
 
         <item
-            android:id="@+id/sent_mail"
+            android:id="@+id/imp"
             android:checked="false"
-            android:title="Richieste Inviate" />
+            android:title="Impostazioni" />
     </group>
 </menu>
