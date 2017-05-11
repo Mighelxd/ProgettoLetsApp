@@ -18,6 +18,7 @@ public class DatabasePosti extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //stringhe contenenti le tabelle
         String tabTipo="CREATE TABLE tipo(" +
                 "codice INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "descrizione TEXT NOT NULL);";
