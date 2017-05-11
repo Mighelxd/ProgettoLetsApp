@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/inbox"
+            android:checked="false"
+            android:title="Nuove Richieste"/>
+
+        <item
+            android:id="@+id/preferiti"
+            android:checked="false"
+            android:title="Preferiti" />
+
+        <item
+            android:id="@+id/imp"
+            android:checked="false"
+            android:title="Impostazioni" />
+    </group>
+</menu>
