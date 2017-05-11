@@ -1,7 +1,9 @@
 package com.example.utente.progettoletsapp;
 
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenu;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
@@ -9,6 +11,7 @@ import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,20 +29,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     DrawerLayout lmenu;
-    ListView menu;
+    NavigationView menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         String opzioniMenu[]={"Impostazioni","ETC"};
         lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
-        menu = (ListView) findViewById(R.id.menuLaterale);
+        menu= (NavigationView) findViewById(R.id.menuLaterale);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        NavigationView.OnNavigationItemSelectedListener ls=new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id=item.getItemId();
+                item.setChecked(true);
+                lmenu.closeDrawers();
+                switch (id)
+                {
+                    case R.id.item1:
+                        Toast.makeText(MapsActivity.this, "item1", Toast.LENGTH_SHORT).show();
+                    case R.id.item2:
+                        Toast.makeText(MapsActivity.this, "item2", Toast.LENGTH_SHORT).show();
+                    case R.id.item3:
+                        Toast.makeText(MapsActivity.this, "item3", Toast.LENGTH_SHORT).show();
+                }
+                lmenu.closeDrawer(GravityCompat.START);
+                return true;
+            }
 
+        };
+       menu.setNavigationItemSelectedListener(ls);
 
     }
 

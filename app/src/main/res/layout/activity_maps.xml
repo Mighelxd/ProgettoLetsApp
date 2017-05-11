@@ -62,10 +62,11 @@
 
 
     <android.support.design.widget.NavigationView
-        android:id="@+id/menulaterale"
+        android:id="@+id/menuLaterale"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_top"
-        app:menu="@menu/drawer_menu"/>
+        app:menu="@menu/drawer_menu"
+        android:fitsSystemWindows="true"/>
 </android.support.v4.widget.DrawerLayout>

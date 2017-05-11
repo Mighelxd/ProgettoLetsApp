@@ -3,17 +3,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/inbox"
+            android:id="@+id/item1"
             android:checked="false"
             android:title="Impostazioni"/>
 
         <item
-            android:id="@+id/preferiti"
+            android:id="@+id/item2"
             android:checked="false"
             android:title="Etc" />
 
         <item
-            android:id="@+id/sent_mail"
+            android:id="@+id/item3"
             android:checked="false"
             android:title="Etc2" />
     </group>
