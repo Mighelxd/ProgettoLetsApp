@@ -35,22 +35,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
-        menu = (NavigationView) findViewById(R.id.menuLaterale);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
+        menu = (NavigationView) findViewById(R.id.menuLaterale);
         NavigationView.OnNavigationItemSelectedListener ls=new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                switch(item.getItemId())
+                {
+                    case R.id.item1:
+                        Toast.makeText(MapsActivity.this, "Primo tasto", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.item2:
+                        Toast.makeText(MapsActivity.this, "Secondo tasto", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.item3:
+                        Toast.makeText(MapsActivity.this, "Terzo tasto", Toast.LENGTH_SHORT).show();
+                        break;
+                }
                 return true;
             }
         };
         menu.setNavigationItemSelectedListener(ls);
+
     }
 
     public void buttonClicked(View v) {
@@ -58,7 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         switch (v.getId()) {
             //Apre il drawer_menu laterale
             case R.id.bMenu:
-                lmenu.openDrawer(Gravity.LEFT);
+                lmenu.openDrawer(Gravity.START);
                 break;
             //Premuto il tasto di ricerca
             case R.id.bSearch:
