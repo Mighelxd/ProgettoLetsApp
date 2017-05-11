@@ -28,13 +28,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    DrawerLayout lmenu;
     NavigationView menu;
+    DrawerLayout lmenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         String opzioniMenu[]={"Impostazioni","ETC"};
-        lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
+       lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
         menu= (NavigationView) findViewById(R.id.menuLaterale);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
@@ -42,32 +42,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        NavigationView.OnNavigationItemSelectedListener ls=new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id=item.getItemId();
-                item.setChecked(true);
-                lmenu.closeDrawers();
-                switch (id)
-                {
-                    case R.id.item1:
-                        Toast.makeText(MapsActivity.this, "item1", Toast.LENGTH_SHORT).show();
-                    case R.id.item2:
-                        Toast.makeText(MapsActivity.this, "item2", Toast.LENGTH_SHORT).show();
-                    case R.id.item3:
-                        Toast.makeText(MapsActivity.this, "item3", Toast.LENGTH_SHORT).show();
-                }
-                lmenu.closeDrawer(GravityCompat.START);
-                return true;
-            }
-
-        };
-       menu.setNavigationItemSelectedListener(ls);
-
     }
 
     public void buttonClicked(View v) {
-        lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
         switch (v.getId()) {
             //Apre il drawer_menu laterale
             case R.id.bMenu:
