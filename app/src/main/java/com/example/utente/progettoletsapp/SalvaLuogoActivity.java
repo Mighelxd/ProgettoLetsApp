@@ -104,7 +104,8 @@ public class SalvaLuogoActivity extends Activity {
         Spinner.OnItemSelectedListener ls2=new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                cod_Stipo=codiciST[position];
+                if(position==8||position==5) cod_Stipo=codiciST[position];
+                else cod_Stipo="null";
             }
 
             @Override
