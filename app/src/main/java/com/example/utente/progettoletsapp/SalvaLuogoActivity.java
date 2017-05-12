@@ -12,6 +12,6 @@ public class SalvaLuogoActivity extends Activity {
         setContentView(R.layout.activity_salva_luogo);
     }
     public void buttonClicked2(View v) {
-
+    //Listener salva
     }
 }
