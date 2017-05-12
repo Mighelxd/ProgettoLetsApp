@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -26,7 +27,7 @@ public class SalvaLuogoActivity extends Activity {
 
         databasePosti=new DatabasePosti(this);
 
-        db=databasePosti.getWritableDatabase();
+        db=databasePosti.getReadableDatabase();
 
         String queryTipi="SELECT descrizione FROM tipo;";
 
@@ -40,7 +41,14 @@ public class SalvaLuogoActivity extends Activity {
         }
 
         spinner.setAdapter(new ArrayAdapter<String>(SalvaLuogoActivity.this,android.R.layout.simple_spinner_dropdown_item,tipi));
+       /* AdapterView.OnItemClickListener ls=new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String querySTipi="SELECT descrizione FROM sottotipo WHERE cod_tipo="+Integer.toString(position+1)+";";
 
+
+            }
+        };*/
 
 
 
@@ -50,6 +58,7 @@ public class SalvaLuogoActivity extends Activity {
 
 
 
-    public void buttonClicked2(View v) {
+    public void buttonClicked2(View v)
+    {
     }
 }
