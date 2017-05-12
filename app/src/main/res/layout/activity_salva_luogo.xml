@@ -4,121 +4,120 @@
     android:id="@+id/activity_salva_luogo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="com.example.utente.progettoletsapp.SalvaLuogoActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Salva Luogo"
         android:textSize="30dp"
-        android:gravity="center"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Nome         :"
-            android:textSize="23dp"
-            android:layout_weight="1"/>
+            android:textSize="23dp" />
 
         <EditText
-            android:layout_width="174dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/rectangle_box"
             android:id="@+id/edtxtnom"
-            android:layout_weight="1"/>
+            android:layout_width="174dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_box"
+            android:inputType="text"
+            android:paddingLeft="10dp"/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Tipo            :"
-            android:textSize="23dp"
-            android:layout_weight="1"/>
+            android:textSize="23dp" />
 
         <Spinner
+            android:id="@+id/spintipo"
             android:layout_width="174dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/spintipo"
             android:textAlignment="center"></Spinner>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Sottotipo    :"
-            android:textSize="23dp"
-            android:layout_weight="1"/>
+            android:textSize="23dp" />
 
         <Spinner
+            android:id="@+id/spinstipo"
             android:layout_width="174dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/spinstipo"
             android:textAlignment="center"></Spinner>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Descrizione:"
-            android:textSize="23dp"
-            android:layout_weight="1"/>
+            android:textSize="23dp" />
 
         <EditText
-            android:layout_width="174dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/rectangle_box"
             android:id="@+id/edtxtdescr"
-            android:layout_weight="1"/>
+            android:layout_width="174dp"
+            android:layout_height="100dp"
+            android:background="@drawable/rectangle_box"
+            android:inputType="textImeMultiLine"
+            android:paddingBottom="70dp"
+            android:paddingLeft="10dp"
+            android:hint="Inserisci descrizione"/>
 
     </LinearLayout>
 
-    <LinearLayout
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CLICCA PER SALVARE"
-            android:textSize="18dp"
-            android:gravity="center"
-            android:layout_gravity="center"/>
-    </LinearLayout>
-
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="CLICCA PER SALVARE"
+        android:textSize="18dp"
+        android:onClick="buttonClicked2"/>
 
 
 </LinearLayout>
