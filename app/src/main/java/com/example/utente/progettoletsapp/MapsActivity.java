@@ -50,7 +50,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private DrawerLayout lmenu;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
-    private Location mLastLocation;
     private double lat,lon;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
 
@@ -101,7 +100,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case R.id.bMenu:
                 lmenu.openDrawer(GravityCompat.START);
                 break;
-            //Premuto il tasto di ricerca sds
+            //Premuto il tasto di ricerca
             case R.id.bSearch:
                 Toast.makeText(this, "Latitudine: "+lat, Toast.LENGTH_SHORT).show();
                 break;
@@ -152,7 +151,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //LatLng sydney = new LatLng(-34, 151);
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
     }
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -164,11 +162,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     @Override
     public void onLocationChanged(Location location)
-    {   if(location!=null)
-        {   mLastLocation=location;
-            lat=mLastLocation.getLatitude();
-            lon=mLastLocation.getLongitude();
+    {   /*if(location!=null)
+        {   lat=location.getLatitude();
+            lon=location.getLongitude();
         }
+        */
     }
 
     @Override
