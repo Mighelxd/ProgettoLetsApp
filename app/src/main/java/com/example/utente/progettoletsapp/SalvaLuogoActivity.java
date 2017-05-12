@@ -137,7 +137,7 @@ public class SalvaLuogoActivity extends Activity {
         nome=eNome.getText().toString();
         Date cal = new Date();
         dataSalvataggio = cal.toString();
-        if(nome=="")
+        if(nome.equals(""))
             Toast.makeText(SalvaLuogoActivity.this,"Devi inserire un nome!",Toast.LENGTH_SHORT).show();
         else {
             EditText eDesc=(EditText) findViewById(R.id.edtxtdescr);
