@@ -101,7 +101,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case R.id.bMenu:
                 lmenu.openDrawer(GravityCompat.START);
                 break;
-            //Premuto il tasto di ricerca
+            //Premuto il tasto di ricerca sds
             case R.id.bSearch:
                 Toast.makeText(this, "Latitudine: "+lat, Toast.LENGTH_SHORT).show();
                 break;
