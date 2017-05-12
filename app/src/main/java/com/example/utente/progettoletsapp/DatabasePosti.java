@@ -41,8 +41,8 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "cod_Stipo INTEGER NOT NULL," +
                 "FOREIGN KEY(cod_Stipo) REFERENCES sottotipo(codice));";
         String insTipo="INSERT INTO tipo (descrizione) VALUES" +
-                "('Locale dove mangiare'),('Locale dove ballere'),('Locale dove bere')," +
-                "('Luogo storico/culturale'),('parcheggio'),('negozio'),('svago'),('altro');";
+                "('Pub/Ristorante/Pizzeria'),('Club'),('Bar/Lounge bar')," +
+                "('Localita' storico/culturale'),('Parcheggio'),('Negozio'),('Svago'),('Altro');";
         String insSTipo="INSERT INTO sottotipo (descrizione,cod_tipo) VALUES" +
                 "('Pistorante',1),('Pub',1),('Pizzeria',1),('Ristorante/Pizzeria',1),('Paninoteca',1),('Fastfood',1)," +
                 "('Discoteca',2),('Disco-bar',2)," +

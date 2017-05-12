@@ -65,7 +65,6 @@
             android:layout_width="174dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textAlignment="center"
             android:textColor="#000000"></Spinner>
     </LinearLayout>
 
@@ -88,7 +87,6 @@
             android:layout_width="174dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textAlignment="center"
             android:textColor="#000000"></Spinner>
     </LinearLayout>
 
@@ -142,35 +140,35 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/stellaBianca"
+            android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl1"
             />
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/stellaBianca"
+            android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl2"
             />
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/stellaBianca"
+            android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl3"
             />
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/stellaBianca"
+            android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl4"
             />
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/stellaBianca"
+            android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl5"
             />
