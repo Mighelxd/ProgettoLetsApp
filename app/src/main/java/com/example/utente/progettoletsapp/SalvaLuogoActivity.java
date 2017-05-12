@@ -58,10 +58,11 @@ public class SalvaLuogoActivity extends Activity {
     }
 
 
+    public void imageClickedStella(View v)
+    {
+    }
 
-
-
-    public void buttonClicked2(View v)
+    public void buttonClickedSave(View v)
     {
     }
 }

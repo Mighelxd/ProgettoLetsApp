@@ -143,6 +143,7 @@
             android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl1"
+            android:onClick="imageClickedStella"
             />
         <ImageView
             android:layout_width="30dp"
@@ -150,6 +151,7 @@
             android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl2"
+            android:onClick="imageClickedStella"
             />
         <ImageView
             android:layout_width="30dp"
@@ -157,6 +159,7 @@
             android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl3"
+            android:onClick="imageClickedStella"
             />
         <ImageView
             android:layout_width="30dp"
@@ -164,6 +167,7 @@
             android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl4"
+            android:onClick="imageClickedStella"
             />
         <ImageView
             android:layout_width="30dp"
@@ -171,6 +175,7 @@
             android:src="@drawable/stellabianca"
             android:layout_weight="1"
             android:id="@+id/stl5"
+            android:onClick="imageClickedStella"
             />
 
     </LinearLayout>
@@ -179,7 +184,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:onClick="buttonClicked2"
+        android:onClick="buttonClickedSave"
         android:text="CLICCA PER SALVARE"
         android:textSize="18dp"
         android:textColor="#000000"/>
