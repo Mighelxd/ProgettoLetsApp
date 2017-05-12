@@ -50,14 +50,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 {   //Selezionato primo tasto menu laterale
                     case R.id.item1:
                         Toast.makeText(MapsActivity.this, "Primo tasto", Toast.LENGTH_SHORT).show();
+                        lmenu.closeDrawers();
                         break;
                     //Selezionato secondo tasto menu laterale
                     case R.id.item2:
                         Toast.makeText(MapsActivity.this, "Secondo tasto", Toast.LENGTH_SHORT).show();
+                        lmenu.closeDrawers();
                         break;
                     //Selezionato terzo tasto menu laterale
                     case R.id.item3:
                         Toast.makeText(MapsActivity.this, "Terzo tasto", Toast.LENGTH_SHORT).show();
+                        lmenu.closeDrawers();
                         break;
                 }
                 return true;
