@@ -26,12 +26,12 @@ public class SalvaLuogoActivity extends Activity {
 
         databasePosti=new DatabasePosti(this);
 
-        db=databasePosti.getReadableDatabase();
+        db=databasePosti.getWritableDatabase();
 
-        String queryTipi="SELECT descrizione FROM tipi;";
+        String queryTipi="SELECT descrizione FROM tipo;";
 
-        cursor=db.rawQuery(queryTipi,null);
-/*
+        Cursor cursor=db.rawQuery(queryTipi,null);
+
         if(cursor.moveToFirst()) {
             int i=0;
             do {
@@ -40,7 +40,6 @@ public class SalvaLuogoActivity extends Activity {
         }
 
         spinner.setAdapter(new ArrayAdapter<String>(SalvaLuogoActivity.this,android.R.layout.simple_spinner_dropdown_item,tipi));
-*/
 
 
 
