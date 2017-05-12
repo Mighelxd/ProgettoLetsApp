@@ -42,7 +42,10 @@ public class SalvaLuogoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salva_luogo);
 
-
+        /* latitudine e longitudine
+        latitudine=getIntent().getStringExtra("latitudine");
+        longitudine=getIntent().getStringExtra("longitudine");
+        */
 
         spinnerTipo=(Spinner) findViewById(R.id.spintipo);
         spinnerSTipo=(Spinner) findViewById(R.id.spinstipo);
@@ -53,10 +56,7 @@ public class SalvaLuogoActivity extends Activity {
         String queryTipi="SELECT descrizione FROM tipo;";
 
         cursor=db.rawQuery(queryTipi,null);
-        /* latitudine e longitudine
-        Double lat=Double.parseDouble(getIntent().getStringExtra("latitudine"));
-        Double lon=Double.parseDouble(getIntent().getStringExtra("longitudine"));
-        */
+
         if(cursor.moveToFirst()) {
             int i=0;
             do {
