@@ -39,7 +39,7 @@ public class SalvaLuogoActivity extends Activity {
             } while (cursor.moveToNext());
         }
 
-        spinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,tipi));
+        spinner.setAdapter(new ArrayAdapter<String>(SalvaLuogoActivity.this,android.R.layout.simple_spinner_dropdown_item,tipi));
 
 
 
