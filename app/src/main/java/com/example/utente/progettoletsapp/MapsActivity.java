@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -47,6 +48,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private NavigationView menu;
     private DrawerLayout lmenu;
     private GoogleApiClient mGoogleApiClient;
+    private LocationRequest mLocationRequest;
+    private Location mLastLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,10 +104,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
             //Premuto il tasto di salvataggio
             case R.id.bSave:
-                startActivity(new Intent(MapsActivity.this,SalvaLuogoActivity.class));
+                bSave();
                 break;
 
         }
+
+    }
+    public void bSave()
+    {   Intent i1=new Intent(MapsActivity.this,SalvaLuogoActivity.class);
+        startActivity(i1);
+        i1.putExtra("latitudine",Double.toString(mLastLocation.getLatitude()));
+        i1.putExtra("latitudine",Double.toString(mLastLocation.getLatitude()));
 
     }
 
@@ -148,7 +158,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mGoogleApiClient.connect();
     }
     @Override
-    public void onLocationChanged(Location location) {
+    public void onLocationChanged(Location location)
+    {   mLastLocation=location;
 
     }
 
@@ -169,7 +180,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(1000);
+        mLocationRequest.setFastestInterval(1000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, (com.google.android.gms.location.LocationListener) this);
+        }
     }
 
     @Override
