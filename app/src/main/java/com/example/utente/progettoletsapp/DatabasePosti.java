@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabasePosti extends SQLiteOpenHelper {
 
     public static final int LUN_TIP=8;
-    public static final int LUN_MAX_STIP=6;
+    public static final int LUN_STIP[]={6,2,3,5,0,6,4,0};
 
     public static final String NOMEDB="PostiDiInteresse";//nome database
 

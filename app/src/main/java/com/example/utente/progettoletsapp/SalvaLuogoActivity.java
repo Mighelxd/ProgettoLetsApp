@@ -46,14 +46,13 @@ public class SalvaLuogoActivity extends Activity {
         }
 
         spinner.setAdapter(new ArrayAdapter<String>(SalvaLuogoActivity.this,android.R.layout.simple_spinner_dropdown_item,tipi));
-       /* AdapterView.OnItemClickListener ls=new AdapterView.OnItemClickListener() {
+        AdapterView.OnItemClickListener ls=new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String querySTipi="SELECT descrizione FROM sottotipo WHERE cod_tipo="+Integer.toString(position+1)+";";
 
-
             }
-        };*/
+        };
 
 
 
