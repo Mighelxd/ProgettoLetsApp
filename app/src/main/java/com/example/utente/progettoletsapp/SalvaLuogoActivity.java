@@ -1,6 +1,7 @@
 package com.example.utente.progettoletsapp;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.StrictMode;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,6 +21,15 @@ public class SalvaLuogoActivity extends Activity {
     private DatabasePosti databasePosti;
     private SQLiteDatabase db;
     private Cursor cursor,cursor2;
+
+    private String nome;
+    private String latitudine;
+    private String longitudine;
+    private String dataSalvataggio;
+    private String descrizione;
+    private String Nstelle;
+    private String cod_Stipo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +60,15 @@ public class SalvaLuogoActivity extends Activity {
 
         spinnerTipo.setAdapter(new ArrayAdapter<String>(SalvaLuogoActivity.this,android.R.layout.simple_spinner_dropdown_item,tipi));
 
-
+        //ascoltatore che permette allo spinner sottotipo di mostrare la lista inerente al tipo selezionato
         Spinner.OnItemSelectedListener ls=new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TextView txt=(TextView) findViewById(R.id.txtstipo) ;
                 spinnerSTipo=(Spinner) findViewById(R.id.spinstipo);
                 if(DatabasePosti.LUN_STIP[position]!=0) {
                     spinnerSTipo.setVisibility(View.VISIBLE);
+                    txt.setVisibility(View.VISIBLE);
                     String querySTipi="SELECT descrizione FROM sottotipo WHERE cod_tipo="+Integer.toString(position+1)+";";
                     String stipi[] = new String[DatabasePosti.LUN_STIP[position]];
                     cursor2=db.rawQuery(querySTipi,null);
@@ -67,8 +80,10 @@ public class SalvaLuogoActivity extends Activity {
                     }
                     spinnerSTipo.setAdapter(new ArrayAdapter<String>(SalvaLuogoActivity.this,android.R.layout.simple_spinner_dropdown_item,stipi));
                 }
-                else
+                else {
                     spinnerSTipo.setVisibility(View.INVISIBLE);
+                    txt.setVisibility(View.INVISIBLE);
+                }
             }
 
             @Override
@@ -91,12 +106,26 @@ public class SalvaLuogoActivity extends Activity {
         int[] ids={R.id.stl1,R.id.stl2,R.id.stl3,R.id.stl4,R.id.stl5};
         for(int i=0;i<5;++i)
             if(v.getId()==ids[i]) {
+                Nstelle=Integer.toString(i+1);
                 for(int j=i;j>=0;j--) stlar[j].setImageResource(R.drawable.stellagialla);
                 for(int k=i+1;k<5;k++) stlar[k].setImageResource(R.drawable.stellabianca);
             }
+
     }
 
     public void buttonClickedSave(View v)
-    {
+    {   EditText eNome=(EditText) findViewById(R.id.edtxtnom);
+        nome=eNome.getText().toString();
+        if(nome=="")
+            Toast.makeText(SalvaLuogoActivity.this,"Devi inserire un nome!",Toast.LENGTH_SHORT).show();
+        else {
+            EditText eDesc=(EditText) findViewById(R.id.edtxtdescr);
+            descrizione=eDesc.getText().toString();
+            String queryInsPosto="INSERT INTO posto " +
+                    "(nome,latitudine,longitudine,dataSalvataggio,descrizione,Nstelle,cod_Stipo)" +
+                    "VALUES ('"+nome+"',"+latitudine+","+longitudine+",'"+dataSalvataggio+"','"+descrizione+"',"+Nstelle+","+cod_Stipo+");";
+
+            db.execSQL(queryInsPosto);
+        }
     }
 }

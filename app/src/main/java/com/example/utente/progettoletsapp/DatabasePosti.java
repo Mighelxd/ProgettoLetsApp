@@ -33,9 +33,9 @@ public class DatabasePosti extends SQLiteOpenHelper {
         String tabPosto="CREATE TABLE posto(" +
                 "codice INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nome TEXT NOT NULL," +
-                "latitudine INTEGER NOT NULL," +
-                "longitudine INTEGER NOT NULL," +
-                "dataSalvataggio TEXT NOT NULL," +
+                "latitudine REAL NOT NULL," +
+                "longitudine REAL NOT NULL," +
+                "dataSalvataggio TEXT," +
                 "descrizione TEXT," +
                 "Nstelle INTEGER," +
                 "cod_Stipo INTEGER NOT NULL," +
