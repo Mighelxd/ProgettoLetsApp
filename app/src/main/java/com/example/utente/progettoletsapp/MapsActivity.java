@@ -79,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Toast.makeText(this, "Premuto ricerca", Toast.LENGTH_SHORT).show();
                 break;
             //Premuto il tasto di salvataggio
-            case R.id.bSave:
+            case R.id.bSave://ciao
                 startActivity(new Intent(MapsActivity.this,SalvaLuogoActivity.class));
                 break;
 

@@ -31,7 +31,6 @@
             android:layout_weight="1"
             android:text="Nome         :"
             android:textSize="23dp" />
-
         <EditText
             android:id="@+id/edtxtnom"
             android:layout_width="174dp"
