@@ -43,6 +43,7 @@ public class SalvaLuogoActivity extends Activity {
 
 
         spinnerTipo=(Spinner) findViewById(R.id.spintipo);
+        spinnerSTipo=(Spinner) findViewById(R.id.spinstipo);
         String tipi[]=new String[DatabasePosti.LUN_TIP];
         databasePosti=new DatabasePosti(this);
         db=databasePosti.getReadableDatabase();
@@ -67,8 +68,7 @@ public class SalvaLuogoActivity extends Activity {
         Spinner.OnItemSelectedListener ls=new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView txt=(TextView) findViewById(R.id.txtstipo) ;
-                spinnerSTipo=(Spinner) findViewById(R.id.spinstipo);
+                TextView txt=(TextView) findViewById(R.id.txtstipo);
                 if(DatabasePosti.LUN_STIP[position]!=0) {
                     spinnerSTipo.setVisibility(View.VISIBLE);
                     txt.setVisibility(View.VISIBLE);
