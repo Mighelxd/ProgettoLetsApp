@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.icu.util.Calendar;
+import android.icu.util.GregorianCalendar;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -15,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Date;
 
 public class SalvaLuogoActivity extends Activity {
 
@@ -38,7 +41,6 @@ public class SalvaLuogoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salva_luogo);
-
 
 
 
@@ -132,6 +134,8 @@ public class SalvaLuogoActivity extends Activity {
     public void buttonClickedSave(View v)
     {   EditText eNome=(EditText) findViewById(R.id.edtxtnom);
         nome=eNome.getText().toString();
+        Date cal = new Date();
+        dataSalvataggio = cal.toString();
         if(nome=="")
             Toast.makeText(SalvaLuogoActivity.this,"Devi inserire un nome!",Toast.LENGTH_SHORT).show();
         else {
