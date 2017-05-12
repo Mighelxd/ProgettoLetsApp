@@ -38,7 +38,8 @@
             android:layout_weight="1"
             android:background="@drawable/rectangle_box"
             android:inputType="text"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:textSize="15dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -87,24 +88,28 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Descrizione:"
-            android:textSize="23dp" />
+            android:layout_marginBottom="10dp"
+            android:text="Descrizione"
+            android:textSize="23dp"
+            android:layout_gravity="center"/>
 
         <EditText
             android:id="@+id/edtxtdescr"
-            android:layout_width="174dp"
+            android:layout_width="fill_parent"
             android:layout_height="100dp"
             android:background="@drawable/rectangle_box"
-            android:hint="Inserisci descrizione"
-            android:inputType="textImeMultiLine"
+            android:hint="Inserire descrizione"
+            android:inputType="textMultiLine"
             android:paddingBottom="70dp"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="15dp"
+            android:imeOptions="actionPrevious"/>
 
     </LinearLayout>
 
