@@ -49,7 +49,7 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "('Bar',3),('Lounge-bar',3),('Enoteca',3)," +
                 "('Museo',4),('Biblioteca',4),('Statua',4),('Palazzo',4),('Castello',4)," +
                 "('Supermercato',6),('Macelleria',6),('Pescheria',6),('Salumeria',6),('Libreria',6),('Negozio abbigliamento',6)," +
-                "('Cinema',7),('Sala gioghhi',7),('Centro scommesse',7),('Centro Sportivo',7);";
+                "('Cinema',7),('Sala giochi',7),('Centro scommesse',7),('Centro Sportivo',7);";
 
         db.execSQL(tabTipo);
         db.execSQL(tabSTipo);
