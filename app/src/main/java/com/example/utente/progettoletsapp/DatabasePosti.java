@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabasePosti extends SQLiteOpenHelper {
 
     public static final int LUN_TIP=8;
-    public static final int LUN_STIP[]={6,2,3,5,0,6,4,0};
+    public static final int LUN_STIP[]={6,2,3,5,1,6,4,1};
 
     public static final String NOMEDB="PostiDiInteresse";//nome database
 
@@ -38,7 +38,7 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "dataSalvataggio TEXT," +
                 "descrizione TEXT," +
                 "Nstelle INTEGER," +
-                "cod_Stipo INTEGER NOT NULL," +
+                "cod_Stipo INTEGER," +
                 "FOREIGN KEY(cod_Stipo) REFERENCES sottotipo(codice));";
         String insTipo="INSERT INTO tipo (descrizione) VALUES" +
                 "('Pub/Ristorante/Pizzeria'),('Club'),('Bar/Lounge bar')," +
@@ -48,8 +48,10 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "('Discoteca',2),('Disco-bar',2)," +
                 "('Bar',3),('Lounge-bar',3),('Enoteca',3)," +
                 "('Museo',4),('Biblioteca',4),('Statua',4),('Palazzo',4),('Castello',4)," +
+                "('Parcheggio',5)," +
                 "('Supermercato',6),('Macelleria',6),('Pescheria',6),('Salumeria',6),('Libreria',6),('Negozio abbigliamento',6)," +
-                "('Cinema',7),('Sala giochi',7),('Centro scommesse',7),('Centro Sportivo',7);";
+                "('Cinema',7),('Sala giochi',7),('Centro scommesse',7),('Centro Sportivo',7)," +
+                "('Altro',8);";
 
         db.execSQL(tabTipo);
         db.execSQL(tabSTipo);
