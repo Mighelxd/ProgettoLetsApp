@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class SalvaLuogoActivity extends Activity {
 
@@ -60,6 +62,13 @@ public class SalvaLuogoActivity extends Activity {
 
     public void imageClickedStella(View v)
     {
+        ImageView[] stlar={(ImageView)findViewById(R.id.stl1),(ImageView) findViewById(R.id.stl2),(ImageView) findViewById(R.id.stl3),(ImageView) findViewById(R.id.stl4),(ImageView) findViewById(R.id.stl5)};
+        int[] ids={R.id.stl1,R.id.stl2,R.id.stl3,R.id.stl4,R.id.stl5};
+        for(int i=0;i<5;++i)
+            if(v.getId()==ids[i]) {
+                for(int j=i;j>=0;j--) stlar[j].setImageResource(R.drawable.stellagialla);
+                for(int k=i+1;k<5;k++) stlar[k].setImageResource(R.drawable.stellabianca);
+            }
     }
 
     public void buttonClickedSave(View v)
