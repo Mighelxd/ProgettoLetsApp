@@ -27,7 +27,7 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "descrizione TEXT NOT NULL);";
         String tabSTipo="CREATE TABLE sottotipo(" +
                 "codice INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "descrizione TEXT NOT NULL," +
+                "descrizione TEXT," +
                 "cod_tipo INTEGER," +
                 "FOREIGN KEY(cod_tipo) REFERENCES tipo(codice));";
         String tabPosto="CREATE TABLE posto(" +
@@ -44,7 +44,7 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "('Pub/Ristorante/Pizzeria'),('Club'),('Bar/Lounge bar')," +
                 "('Località storico/culturale'),('Parcheggio'),('Negozio'),('Svago'),('Altro');";
         String insSTipo="INSERT INTO sottotipo (descrizione,cod_tipo) VALUES" +
-                "('Pistorante',1),('Pub',1),('Pizzeria',1),('Ristorante/Pizzeria',1),('Paninoteca',1),('Fastfood',1)," +
+                "('Ristorante',1),('Pub',1),('Pizzeria',1),('Ristorante/Pizzeria',1),('Paninoteca',1),('Fastfood',1)," +
                 "('Discoteca',2),('Disco-bar',2)," +
                 "('Bar',3),('Lounge-bar',3),('Enoteca',3)," +
                 "('Museo',4),('Biblioteca',4),('Statua',4),('Palazzo',4),('Castello',4)," +
