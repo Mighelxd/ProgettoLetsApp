@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
@@ -57,7 +58,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private Marker mCurrLocationMarker;
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
@@ -66,7 +66,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
         menu = (NavigationView) findViewById(R.id.menuLaterale);
         NavigationView.OnNavigationItemSelectedListener ls = new NavigationView.OnNavigationItemSelectedListener() {
@@ -76,7 +75,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 switch (item.getItemId()) {   //Selezionato primo tasto menu laterale
                     case R.id.item1:
                         Toast.makeText(MapsActivity.this, "Primo tasto", Toast.LENGTH_SHORT).show();
-                        lmenu.closeDrawers();
                         break;
                     //Selezionato secondo tasto menu laterale
                     case R.id.item2:
@@ -136,7 +134,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)
@@ -176,7 +174,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(30));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
 
     }
 
