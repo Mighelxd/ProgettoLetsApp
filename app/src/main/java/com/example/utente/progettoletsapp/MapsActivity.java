@@ -113,8 +113,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void bSave()
     {   //Premuto il tasto di salvataggio e dichiarazione intent di mappa e mandata latitudine e longitudine
         Intent i1=new Intent(MapsActivity.this,SalvaLuogoActivity.class);
-        i1.putExtra("latitudine",Double.toString(mLastLocation.getLatitude()));
-        i1.putExtra("longitudine",Double.toString(mLastLocation.getLatitude()));
+        /*i1.putExtra("latitudine",Double.toString(mLastLocation.getLatitude()));
+        i1.putExtra("longitudine",Double.toString(mLastLocation.getLatitude()));*/
         startActivity(i1);
     }
 
