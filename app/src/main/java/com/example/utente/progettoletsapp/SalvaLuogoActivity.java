@@ -42,10 +42,10 @@ public class SalvaLuogoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salva_luogo);
 
-        /* latitudine e longitudine
+         //latitudine e longitudine
         latitudine=getIntent().getStringExtra("latitudine");
         longitudine=getIntent().getStringExtra("longitudine");
-        */
+
 
         spinnerTipo=(Spinner) findViewById(R.id.spintipo);
         spinnerSTipo=(Spinner) findViewById(R.id.spinstipo);
