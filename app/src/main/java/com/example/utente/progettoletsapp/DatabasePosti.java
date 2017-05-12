@@ -33,6 +33,7 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "latitudine INTEGER NOT NULL," +
                 "longitudine INTEGER NOT NULL," +
                 "dataSalvataggio TEXT NOT NULL," +
+                "descrizione TEXT," +
                 "Nstelle INTEGER," +
                 "cod_Stipo INTEGER NOT NULL," +
                 "FOREIGN KEY(cod_Stipo) REFERENCES sottotipo(codice));";
