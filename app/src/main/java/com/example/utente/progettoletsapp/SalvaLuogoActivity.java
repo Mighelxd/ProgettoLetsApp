@@ -32,7 +32,10 @@ public class SalvaLuogoActivity extends Activity {
         String queryTipi="SELECT descrizione FROM tipo;";
 
         Cursor cursor=db.rawQuery(queryTipi,null);
-
+        /* latitudine e longitudine
+        Double lat=Double.parseDouble(getIntent().getStringExtra("latitudine"));
+        Double lon=Double.parseDouble(getIntent().getStringExtra("longitudine"));
+        */
         if(cursor.moveToFirst()) {
             int i=0;
             do {
