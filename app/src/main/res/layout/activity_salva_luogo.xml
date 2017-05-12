@@ -9,7 +9,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.utente.progettoletsapp.SalvaLuogoActivity">
+    tools:context="com.example.utente.progettoletsapp.SalvaLuogoActivity"
+    android:background="#ffffff">
 
     <TextView
         android:layout_width="match_parent"
@@ -17,7 +18,8 @@
         android:gravity="center"
         android:text="Salva Luogo"
         android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="#000000"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Nome         :"
-            android:textSize="23dp" />
+            android:textSize="23dp"
+            android:textColor="#000000"/>
         <EditText
             android:id="@+id/edtxtnom"
             android:layout_width="174dp"
@@ -38,7 +41,9 @@
             android:layout_weight="1"
             android:background="@drawable/rectangle_box"
             android:inputType="text"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:textSize="15dp"
+            android:textColor="#000000"/>
     </LinearLayout>
 
     <LinearLayout
@@ -52,14 +57,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Tipo            :"
-            android:textSize="23dp" />
+            android:textSize="23dp"
+            android:textColor="#000000"/>
 
         <Spinner
             android:id="@+id/spintipo"
             android:layout_width="174dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textAlignment="center"></Spinner>
+            android:textAlignment="center"
+            android:textColor="#000000"></Spinner>
     </LinearLayout>
 
     <LinearLayout
@@ -73,38 +80,46 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Sottotipo    :"
-            android:textSize="23dp" />
+            android:textSize="23dp"
+            android:textColor="#000000"/>
 
         <Spinner
             android:id="@+id/spinstipo"
             android:layout_width="174dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textAlignment="center"></Spinner>
+            android:textAlignment="center"
+            android:textColor="#000000"></Spinner>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Descrizione:"
-            android:textSize="23dp" />
+            android:layout_marginBottom="10dp"
+            android:text="Descrizione"
+            android:textSize="23dp"
+            android:layout_gravity="center"
+            android:textColor="#000000"/>
 
         <EditText
             android:id="@+id/edtxtdescr"
-            android:layout_width="174dp"
+            android:layout_width="fill_parent"
             android:layout_height="100dp"
             android:background="@drawable/rectangle_box"
-            android:hint="Inserisci descrizione"
-            android:inputType="textImeMultiLine"
+            android:hint="Inserire descrizione"
+            android:inputType="textMultiLine"
             android:paddingBottom="70dp"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="15dp"
+            android:imeOptions="actionPrevious"
+            android:textColor="#000000"/>
 
     </LinearLayout>
 
@@ -116,7 +131,8 @@
         android:gravity="center"
         android:onClick="buttonClicked2"
         android:text="CLICCA PER SALVARE"
-        android:textSize="18dp" />
+        android:textSize="18dp"
+        android:textColor="#000000"/>
 
 
 </LinearLayout>
