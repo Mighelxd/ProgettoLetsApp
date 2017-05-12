@@ -12,5 +12,5 @@
         android:startColor="#FFFFFF"
         android:endColor="#FFFFFF"
         android:type="linear"
-        android:angle="270" />
+        android:angle="270"/>
 </shape>
