@@ -5,8 +5,10 @@ import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,7 +29,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -36,41 +37,43 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener
-{
+        com.google.android.gms.location.LocationListener {
 
     private GoogleMap mMap;
     private NavigationView menu;
     private DrawerLayout lmenu;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
-    private double lat,lon;
+    private Location mLastLocation;
+    private double lat, lon;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    private Marker mCurrLocationMarker;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-         //Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        //Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
         menu = (NavigationView) findViewById(R.id.menuLaterale);
-        NavigationView.OnNavigationItemSelectedListener ls=new NavigationView.OnNavigationItemSelectedListener() {
+        NavigationView.OnNavigationItemSelectedListener ls = new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch(item.getItemId())
-                {   //Selezionato primo tasto menu laterale
+                switch (item.getItemId()) {   //Selezionato primo tasto menu laterale
                     case R.id.item1:
                         Toast.makeText(MapsActivity.this, "Primo tasto", Toast.LENGTH_SHORT).show();
                         lmenu.closeDrawers();
@@ -102,7 +105,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
             //Premuto il tasto di ricerca
             case R.id.bSearch:
-                Toast.makeText(this, "Latitudine: "+lat, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Latitudine: "+Double.toString(mLastLocation.getLatitude())+" Longitudine"+Double.toString(mLastLocation.getLongitude()), Toast.LENGTH_LONG).show();
                 break;
             //Premuto il tasto di salvataggio
             case R.id.bSave:
@@ -112,9 +115,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
     }
-    public void bSave()
-    {   //Premuto il tasto di salvataggio e dichiarazione intent di mappa e mandata latitudine e longitudine
-        Intent i1=new Intent(MapsActivity.this,SalvaLuogoActivity.class);
+
+    public void bSave() {   //Premuto il tasto di salvataggio e dichiarazione intent di mappa e mandata latitudine e longitudine
+        Intent i1 = new Intent(MapsActivity.this, SalvaLuogoActivity.class);
         /*i1.putExtra("latitudine",Double.toString(mLastLocation.getLatitude()));
         i1.putExtra("longitudine",Double.toString(mLastLocation.getLatitude()));*/
         startActivity(i1);
@@ -133,17 +136,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
-                checkLocationPermission();
+                    == PackageManager.PERMISSION_GRANTED || checkLocationPermission()) {
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
             }
-        }
-        else {
+
+        } else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
@@ -152,6 +154,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -160,40 +163,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .build();
         mGoogleApiClient.connect();
     }
+
     @Override
-    public void onLocationChanged(Location location)
-    {   /*if(location!=null)
-        {   lat=location.getLatitude();
-            lon=location.getLongitude();
+    public void onLocationChanged(Location location) {
+        if(location!=null)
+        {
+            mLastLocation=location;
         }
-        */
-    }
 
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
+        //Place current location marker
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());;
 
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
+        //move map camera
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(50));
 
     }
 
-    @Override
-    public void onProviderDisabled(String provider) {
-
-    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        mLocationRequest = new LocationRequest();
+       mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(1000);
         mLocationRequest.setFastestInterval(1000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, (com.google.android.gms.location.LocationListener) this);
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,mLocationRequest,this);
         }
     }
 
@@ -206,7 +203,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-    public boolean checkLocationPermission(){
+
+    public boolean checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -236,6 +234,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return true;
         }
     }
+
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
         switch (requestCode) {
