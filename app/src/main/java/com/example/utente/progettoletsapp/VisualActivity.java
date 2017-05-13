@@ -96,6 +96,7 @@ public class VisualActivity extends AppCompatActivity {
                 Intent intent=new Intent(VisualActivity.this,SalvaLuogoActivity.class);
                 intent.putExtra("codice",codice);
                 intent.putExtra("codRichiesta","2");
+                startActivity(intent);
             }
             if(v.getId()==R.id.bPer){
                 Toast.makeText(VisualActivity.this,"Premuto Percorso",Toast.LENGTH_LONG).show();
