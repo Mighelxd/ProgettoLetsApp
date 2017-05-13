@@ -1,6 +1,7 @@
 package com.example.utente.progettoletsapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,6 +23,7 @@ import java.util.Date;
 public class SalvaLuogoActivity extends Activity {
 
     private Spinner spinnerTipo,spinnerSTipo;
+    private EditText eDesc,eNome;
     private DatabasePosti databasePosti;
     private SQLiteDatabase db;
     private Cursor cursor,cursor2;
@@ -42,11 +44,8 @@ public class SalvaLuogoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salva_luogo);
 
-         //latitudine e longitudine
-        latitudine=getIntent().getStringExtra("latitudine");
-        longitudine=getIntent().getStringExtra("longitudine");
-
-
+        eDesc=(EditText) findViewById(R.id.edtxtdescr);
+        eNome=(EditText) findViewById(R.id.edtxtnom);
         spinnerTipo=(Spinner) findViewById(R.id.spintipo);
         spinnerSTipo=(Spinner) findViewById(R.id.spinstipo);
         String tipi[]=new String[DatabasePosti.LUN_TIP];
@@ -130,21 +129,35 @@ public class SalvaLuogoActivity extends Activity {
     }
 
     public void buttonClickedSave(View v)
-    {   EditText eNome=(EditText) findViewById(R.id.edtxtnom);
+    {
         nome=eNome.getText().toString();
-        Date cal = new Date();
-        dataSalvataggio = cal.toString();
+
         if(nome.equals(""))
             Toast.makeText(SalvaLuogoActivity.this,"Devi inserire un nome!",Toast.LENGTH_SHORT).show();
         else {
-            EditText eDesc=(EditText) findViewById(R.id.edtxtdescr);
-            descrizione=eDesc.getText().toString();
-            String queryInsPosto="INSERT INTO posto " +
-                    "(nome,latitudine,longitudine,dataSalvataggio,descrizione,Nstelle,cod_Stipo)" +
-                    "VALUES ('"+nome+"',"+latitudine+","+longitudine+",'"+dataSalvataggio+"','"+descrizione+"',"+Nstelle+","+cod_Stipo+");";
-            db.execSQL(queryInsPosto);
-            Toast.makeText(this, "Luogo salvato.", Toast.LENGTH_SHORT).show();
-            finish();
+            switch (getIntent().getIntExtra("codRichiesta",0)) {
+                case 1: primoSalva(); break;
+                case 2: modifica(); break;
+            }
         }
+    }
+
+    public void primoSalva(){
+        //latitudine e longitudine
+        latitudine=getIntent().getStringExtra("latitudine");
+        longitudine=getIntent().getStringExtra("longitudine");
+        Date cal = new Date();
+        dataSalvataggio = cal.toString();
+        descrizione=eDesc.getText().toString();
+        String queryInsPosto="INSERT INTO posto " +
+                "(nome,latitudine,longitudine,dataSalvataggio,descrizione,Nstelle,cod_Stipo)" +
+                "VALUES ('"+nome+"',"+latitudine+","+longitudine+",'"+dataSalvataggio+"','"+descrizione+"',"+Nstelle+","+cod_Stipo+");";
+        db.execSQL(queryInsPosto);
+        Toast.makeText(this, "Posto salvato.", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    public void modifica() {
+
     }
 }
