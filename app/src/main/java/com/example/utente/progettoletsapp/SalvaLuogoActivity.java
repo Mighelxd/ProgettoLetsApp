@@ -190,7 +190,7 @@ public class SalvaLuogoActivity extends Activity {
             stlAr[Integer.parseInt(Nstelle)-1].performClick();
             for(i = 0; i <= spinnerTipo.getAdapter().getCount() && !spinnerTipo.getItemAtPosition(i).toString().equals(tDesc); ++i);
             spinnerTipo.setSelection(i,true);
-            /*spinnerSTipo=(Spinner)findViewById(R.id.spinstipo);
+            /*spinnerSTipo=(Spinner)findViewById(R.id.spinstipo);asd
             Toast.makeText(this, Integer.toString(spinnerSTipo.getAdapter().getCount()), Toast.LENGTH_SHORT).show();*/
 
         }
