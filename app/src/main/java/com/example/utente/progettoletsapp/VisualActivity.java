@@ -1,7 +1,10 @@
 package com.example.utente.progettoletsapp;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -69,10 +72,29 @@ public class VisualActivity extends AppCompatActivity {
 
         public void buttonClicked(View v){
             if(v.getId()==R.id.bCanc){
-                Toast.makeText(VisualActivity.this,"Premuto Cancella",Toast.LENGTH_LONG).show();
+                new AlertDialog.Builder(VisualActivity.this)
+                        .setTitle("Conferma")
+                        .setMessage("Sei sicuro di voler eliminare questa voce?")
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String queryDelete="DELETE FROM posti WHERE codice="+codice+";";
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
             if(v.getId()==R.id.bMod){
-                Toast.makeText(VisualActivity.this,"Premuto Modifica",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(VisualActivity.this,SalvaLuogoActivity.class);
+                intent.putExtra("codice",codice);
+                intent.putExtra("codRichiesta","2");
             }
             if(v.getId()==R.id.bPer){
                 Toast.makeText(VisualActivity.this,"Premuto Percorso",Toast.LENGTH_LONG).show();
