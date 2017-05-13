@@ -121,7 +121,7 @@
         <Button
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/oval_box"
             android:drawableStart="@drawable/ic_delete_black_48dp"
@@ -130,12 +130,21 @@
         <Button
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginStart="140dp"
+            android:layout_marginStart="50dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/oval_box"
             android:drawableStart="@drawable/ic_update_black_48dp"
             android:paddingLeft="11dp"
             android:id="@+id/bMod"/>
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="50dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/oval_box"
+            android:drawableStart="@drawable/ic_navigation_black_48dp"
+            android:paddingLeft="11dp"
+            android:id="@+id/bPer"/>
     </LinearLayout>
 
 
