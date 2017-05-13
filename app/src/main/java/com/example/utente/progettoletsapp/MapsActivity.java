@@ -37,6 +37,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -64,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double lat, lon;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private Marker mCurrLocationMarker;
-    int cont=0;
+    int cont = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
@@ -82,17 +83,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 switch (item.getItemId()) {   //Selezionato primo tasto menu laterale
                     case R.id.item1:
-                        Intent i=new Intent(MapsActivity.this,RicercaActivity.class);
-                        i.putExtra("edRic","");
-                        startActivity(i);
+                        allPos();
+                        break;
+                    case R.id.item2:
+                        likedPos();
                         break;
                 }
                 return true;
             }
         };
         menu.setNavigationItemSelectedListener(ls);
-        EditText txt=(EditText)findViewById(R.id.editText);
-        TextView.OnEditorActionListener ls1=new TextView.OnEditorActionListener() {
+        EditText txt = (EditText) findViewById(R.id.editText);
+        TextView.OnEditorActionListener ls1 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 bSearch();
@@ -128,26 +130,42 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void bSave() {   //Premuto il tasto di salvataggio e dichiarazione intent di mappa e mandata latitudine e longitudine
         Intent i1 = new Intent(MapsActivity.this, SalvaLuogoActivity.class);
-        i1.putExtra("latitudine",Double.toString(mLastLocation.getLatitude()));
-        i1.putExtra("longitudine",Double.toString(mLastLocation.getLatitude()));
+        i1.putExtra("codRichiesta",1);
+        i1.putExtra("latitudine", Double.toString(mLastLocation.getLatitude()));
+        i1.putExtra("longitudine", Double.toString(mLastLocation.getLatitude()));
         startActivity(i1);
     }
-    public void bPos(){
+
+    public void bPos() {
         LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
     }
-    public void bSearch()
-    {   EditText txt=(EditText)findViewById(R.id.editText);
-        if(txt.getText().toString().isEmpty())
+
+    public void bSearch() {
+        EditText txt = (EditText) findViewById(R.id.editText);
+        if (txt.getText().toString().isEmpty())
             Toast.makeText(this, "Non è possibile ricercare senza inserire una parola chiave", Toast.LENGTH_SHORT).show();
-        else
-        {   Intent i=new Intent(MapsActivity.this,RicercaActivity.class);
-            i.putExtra("edRic",txt.getText().toString());
+        else {
+            Intent i = new Intent(MapsActivity.this, RicercaActivity.class);
+            i.putExtra("edRic", txt.getText().toString());
+            i.putExtra("codRichiesta", 1);
             startActivity(i);
         }
     }
 
+    public void allPos() {
+        Intent i = new Intent(MapsActivity.this, RicercaActivity.class);
+        i.putExtra("edRic", "");
+        i.putExtra("codRichiesta", 2);
+        startActivity(i);
+    }
+    public void likedPos() {
+        Intent i = new Intent(MapsActivity.this, RicercaActivity.class);
+        i.putExtra("edRic", "");
+        i.putExtra("codRichiesta", 3);
+        startActivity(i);
+    }
 
 
     /**
@@ -192,16 +210,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onLocationChanged(Location location) {
-        if(cont==0)
-        {
+        if (cont == 0) {
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
             ++cont;
         }
-        if(location!=null)
-        {
-            mLastLocation=location;
+        if (location != null) {
+            mLastLocation = location;
         }
     }
 
@@ -215,7 +231,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,mLocationRequest,this);
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
     }
 
