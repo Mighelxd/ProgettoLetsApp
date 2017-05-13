@@ -19,17 +19,17 @@
             android:text="INFORMAZIONI LUOGO"
             android:textColor="#000000"
             android:gravity="center"
-            android:textSize="20dp"
-            android:layout_weight="1"/>
+            android:textSize="15dp"
+            android:layout_weight="0.3"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nome Luogo"
-            android:textSize="35dp"
+            android:textSize="25dp"
             android:gravity="center"
             android:textColor="#000000"
             android:textStyle="bold"
-            android:layout_weight="1"
+            android:layout_weight="0.7"
             android:id="@+id/txtnom"
             />
         <TextView
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:text="Tipo              :"
             android:textColor="#000000"
-            android:textSize="25dp"
-            android:layout_weight="1"
+            android:textSize="17dp"
+            android:layout_weight="0.7"
             android:id="@+id/txttip"
             />
         <TextView
@@ -46,51 +46,51 @@
             android:layout_height="wrap_content"
             android:text="Sottotipo      :"
             android:textColor="#000000"
-            android:textSize="25dp"
-            android:layout_weight="1"
+            android:textSize="17dp"
+            android:layout_weight="0.7"
             android:id="@+id/txtstip"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.7"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Valutazione"
                 android:textColor="#000000"
-                android:textSize="25dp"
+                android:textSize="17dp"
                 android:layout_weight="0"
                 android:layout_marginRight="20dp"
                 />
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="25dp"
                 android:layout_weight="0.9"
                 android:src="@drawable/stellagialla"
                 android:id="@id/stl1"/>
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="25dp"
                 android:layout_weight="0.9"
                 android:src="@drawable/stellagialla"
                 android:id="@id/stl2"/>
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="25dp"
                 android:layout_weight="0.9"
                 android:src="@drawable/stellagialla"
                 android:id="@id/stl3"/>
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="25dp"
                 android:layout_weight="0.9"
                 android:src="@drawable/stellagialla"
                 android:id="@id/stl4"/>
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="25dp"
                 android:layout_weight="0.9"
                 android:src="@drawable/stellagialla"
                 android:id="@id/stl5"/>
@@ -100,8 +100,8 @@
             android:layout_height="wrap_content"
             android:text="Data Salvataggio :"
             android:textColor="#000000"
-            android:textSize="25dp"
-            android:layout_weight="1"
+            android:textSize="17dp"
+            android:layout_weight="0.7"
             android:id="@+id/txtds"
             />
         <TextView
@@ -109,8 +109,8 @@
             android:layout_height="wrap_content"
             android:text="Descrizione :"
             android:textColor="#000000"
-            android:textSize="25dp"
-            android:layout_weight="1"
+            android:textSize="17dp"
+            android:layout_weight="0.9"
             android:id="@+id/txtdescr"/>
     </LinearLayout>
     <LinearLayout
@@ -123,7 +123,7 @@
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/oval_box"
+            android:background="@android:color/transparent"
             android:drawableStart="@drawable/ic_delete_black_48dp"
             android:paddingLeft="30dp"
             android:id="@+id/bCanc"
@@ -133,7 +133,7 @@
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/oval_box"
+            android:background="@android:color/transparent"
             android:drawableStart="@drawable/ic_update_black_48dp"
             android:paddingLeft="30dp"
             android:id="@+id/bMod"
@@ -143,7 +143,7 @@
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/oval_box"
+            android:background="@android:color/transparent"
             android:drawableStart="@drawable/ic_navigation_black_48dp"
             android:paddingLeft="30dp"
             android:id="@+id/bPer"
