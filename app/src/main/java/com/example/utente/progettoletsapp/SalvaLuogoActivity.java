@@ -142,8 +142,9 @@ public class SalvaLuogoActivity extends Activity {
             String queryInsPosto="INSERT INTO posto " +
                     "(nome,latitudine,longitudine,dataSalvataggio,descrizione,Nstelle,cod_Stipo)" +
                     "VALUES ('"+nome+"',"+latitudine+","+longitudine+",'"+dataSalvataggio+"','"+descrizione+"',"+Nstelle+","+cod_Stipo+");";
-
             db.execSQL(queryInsPosto);
+            Toast.makeText(this, "Luogo salvato.", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 }
