@@ -69,25 +69,7 @@ public class SalvaLuogoActivity extends Activity {
         Spinner.OnItemSelectedListener ls = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView txt = (TextView) findViewById(R.id.txtstipo);
-                spinnerSTipo.setVisibility(View.VISIBLE);
-                txt.setVisibility(View.VISIBLE);
-                String querySTipi = "SELECT codice,descrizione FROM sottotipo WHERE cod_tipo=" + Integer.toString(position + 1) + ";";
-                String stipi[] = new String[DatabasePosti.LUN_STIP[position]];
-                codiciST = new String[DatabasePosti.LUN_STIP[position]];
-                cursor2 = db.rawQuery(querySTipi, null);
-                if (cursor2.moveToFirst()) {
-                    int j = 0;
-                    do {
-                        codiciST[j] = cursor2.getString(0);
-                        stipi[j++] = cursor2.getString(1);
-                    } while (cursor2.moveToNext());
-                    spinnerSTipo.setAdapter(new ArrayAdapter<String>(SalvaLuogoActivity.this, android.R.layout.simple_spinner_dropdown_item, stipi));
-                }
-                if (DatabasePosti.LUN_STIP[position] == 1) {
-                    spinnerSTipo.setVisibility(View.INVISIBLE);
-                    txt.setVisibility(View.INVISIBLE);
-                }
+                inizSTipo(position);
             }
 
             @Override
@@ -190,10 +172,34 @@ public class SalvaLuogoActivity extends Activity {
             stlAr[Integer.parseInt(Nstelle)-1].performClick();
             for(i = 0; i <= spinnerTipo.getAdapter().getCount() && !spinnerTipo.getItemAtPosition(i).toString().equals(tDesc); ++i);
             spinnerTipo.setSelection(i,true);
-            /*spinnerSTipo=(Spinner)findViewById(R.id.spinstipo);
-            Toast.makeText(this, Integer.toString(spinnerSTipo.getAdapter().getCount()), Toast.LENGTH_SHORT).show();*/
+            inizSTipo(i);
+            spinnerSTipo=(Spinner)findViewById(R.id.spinstipo);
+            for(i = 0;  i<= spinnerSTipo.getAdapter().getCount() && !spinnerSTipo.getItemAtPosition(i).toString().equals(sDesc); ++i);
+            Toast.makeText(this, sDesc, Toast.LENGTH_SHORT).show();
+            spinnerSTipo.setSelection(i,true);
 
         }
 
+    }
+    public void inizSTipo(int position)
+    {   TextView txt = (TextView) findViewById(R.id.txtstipo);
+        spinnerSTipo.setVisibility(View.VISIBLE);
+        txt.setVisibility(View.VISIBLE);
+        String querySTipi = "SELECT codice,descrizione FROM sottotipo WHERE cod_tipo=" + Integer.toString(position + 1) + ";";
+        String stipi[] = new String[DatabasePosti.LUN_STIP[position]];
+        codiciST = new String[DatabasePosti.LUN_STIP[position]];
+        cursor2 = db.rawQuery(querySTipi, null);
+        if (cursor2.moveToFirst()) {
+            int j = 0;
+            do {
+                codiciST[j] = cursor2.getString(0);
+                stipi[j++] = cursor2.getString(1);
+            } while (cursor2.moveToNext());
+            spinnerSTipo.setAdapter(new ArrayAdapter<String>(SalvaLuogoActivity.this, android.R.layout.simple_spinner_dropdown_item, stipi));
+        }
+        if (DatabasePosti.LUN_STIP[position] == 1) {
+            spinnerSTipo.setVisibility(View.INVISIBLE);
+            txt.setVisibility(View.INVISIBLE);
+        }
     }
 }
