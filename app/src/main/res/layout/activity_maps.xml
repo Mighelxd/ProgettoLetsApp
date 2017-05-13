@@ -65,24 +65,25 @@
 
             <Button
                 android:id="@+id/bSave"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="10dp"
-                android:paddingLeft="15dp"
+                android:paddingLeft="11dp"
                 android:onClick="buttonClicked"
                 android:drawableStart="@drawable/ic_save_black_48dp"
-                android:background="@android:color/transparent"/>
+                android:background="@drawable/oval_box"/>
             <Button
                 android:id="@+id/bPos"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="10dp"
-                android:paddingLeft="15dp"
+                android:paddingLeft="11dp"
+                android:layout_marginTop="10dp"
                 android:drawableStart="@drawable/ic_location_on_black_48dp"
                 android:onClick="buttonClicked"
-                android:background="@android:color/transparent"/>
+                android:background="@drawable/oval_box"/>
 
         </LinearLayout>
     </fragment>
