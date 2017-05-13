@@ -81,7 +81,6 @@ public class RicercaActivity extends AppCompatActivity {
                 "ORDER BY p.Nstelle;";
 
         Cursor cursor=db.rawQuery(queryRic,null);
-        int numVociPrec=numVoci;
         numVoci=0;
         if(cursor.getCount()>0) {
             nomiRic=new String[cursor.getCount()];
@@ -98,8 +97,10 @@ public class RicercaActivity extends AppCompatActivity {
         }
         else {
             numVoci=0;
+            nomiRic=new String[numVoci];
+            codiciRic=new String[numVoci];
             lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this,android.R.layout.simple_list_item_1,nomiRic));
-            Toast.makeText(RicercaActivity.this,"Nessun Posto trovato!",Toast.LENGTH_SHORT);
+            Toast.makeText(RicercaActivity.this,"Nessun Posto trovato!",Toast.LENGTH_SHORT).show();
         }
     }
 
