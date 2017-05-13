@@ -79,6 +79,7 @@ public class VisualActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 String queryDelete="DELETE FROM posti WHERE codice="+codice+";";
+                                db.execSQL(queryDelete);
                                 finish();
                             }
                         })
