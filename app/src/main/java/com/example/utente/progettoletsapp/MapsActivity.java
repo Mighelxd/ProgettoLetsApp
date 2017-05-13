@@ -57,6 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double lat, lon;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private Marker mCurrLocationMarker;
+    int cont=0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +110,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case R.id.bSave:
                 bSave();
                 break;
-
+            case R.id.bPos:
+                bPos();
+                break;
         }
 
     }
@@ -119,6 +122,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         i1.putExtra("latitudine",Double.toString(mLastLocation.getLatitude()));
         i1.putExtra("longitudine",Double.toString(mLastLocation.getLatitude()));
         startActivity(i1);
+    }
+    public void bPos(){
+        LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
     }
 
 
@@ -164,24 +172,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onLocationChanged(Location location) {
+        if(cont==0)
+        {
+            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
+            ++cont;
+        }
         if(location!=null)
         {
             mLastLocation=location;
         }
-
-        //Place current location marker
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());;
-
-        //move map camera
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
-
     }
 
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-       mLocationRequest = new LocationRequest();
+        mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(1000);
         mLocationRequest.setFastestInterval(1000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);

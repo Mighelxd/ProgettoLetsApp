@@ -71,6 +71,13 @@
                 android:onClick="buttonClicked"
                 android:drawableStart="@drawable/salvataggio"
                 android:background="@android:color/transparent"/>
+            <Button
+                android:id="@+id/bPos"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:onClick="buttonClicked"/>
 
         </LinearLayout>
     </fragment>
