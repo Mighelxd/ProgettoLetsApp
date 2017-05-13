@@ -33,7 +33,8 @@
             android:layout_height="50dp"
             android:layout_weight="0.05"
             android:background="#00ffffff"
-            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:paddingLeft="6dp"
             android:onClick="buttonClicked" />
     </LinearLayout>
 
