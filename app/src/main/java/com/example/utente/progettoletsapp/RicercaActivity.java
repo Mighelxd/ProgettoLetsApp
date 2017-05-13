@@ -1,6 +1,7 @@
 package com.example.utente.progettoletsapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.IBinder;
@@ -11,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -56,6 +58,15 @@ public class RicercaActivity extends AppCompatActivity {
         lista=(ListView) findViewById(R.id.listaPosti);
         numVoci=0;
         bSearch();
+        AdapterView.OnItemClickListener ls2=new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i=new Intent(RicercaActivity.this,VisualActivity.class);
+                i.putExtra("codice",codiciRic[position]);
+                startActivity(i);
+            }
+        };
+        lista.setOnItemClickListener(ls2);
 
     }
     public void buttonClicked(View v){
