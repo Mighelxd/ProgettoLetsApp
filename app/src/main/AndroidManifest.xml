@@ -44,7 +44,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SalvaLuogoActivity" />
-        <activity android:name=".RicercaActivity"></activity>
+        <activity android:name=".RicercaActivity" />
+        <activity android:name=".VisualActivity"></activity>
     </application>
 
 </manifest>
