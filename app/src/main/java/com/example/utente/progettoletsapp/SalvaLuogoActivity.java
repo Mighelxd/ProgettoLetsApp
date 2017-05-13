@@ -184,15 +184,15 @@ public class SalvaLuogoActivity extends Activity {
             String sDesc = cursor1.getString(6);
             String tDesc = cursor1.getString(7);
             int i=0;
-            int j=0;
             eNome.setText(nome);
             eDesc.setText(descrizione);
             ImageView[] stlAr = {(ImageView) findViewById(R.id.stl1), (ImageView) findViewById(R.id.stl2), (ImageView) findViewById(R.id.stl3), (ImageView) findViewById(R.id.stl4), (ImageView) findViewById(R.id.stl5)};
-            //stlAr[Integer.parseInt(Nstelle)].performClick();
+            stlAr[Integer.parseInt(Nstelle)-1].performClick();
             for(i = 0; i <= spinnerTipo.getAdapter().getCount() && !spinnerTipo.getItemAtPosition(i).toString().equals(tDesc); ++i);
             spinnerTipo.setSelection(i,true);
-            for(j = 0; j <= spinnerSTipo.getAdapter().getCount() && !spinnerSTipo.getItemAtPosition(j).toString().equals(sDesc); ++i);
-            spinnerSTipo.setSelection(j,true);
+            /*spinnerSTipo=(Spinner)findViewById(R.id.spinstipo);
+            Toast.makeText(this, Integer.toString(spinnerSTipo.getAdapter().getCount()), Toast.LENGTH_SHORT).show();*/
+
         }
 
     }
