@@ -74,11 +74,11 @@ public class VisualActivity extends AppCompatActivity {
             if(v.getId()==R.id.bCanc){
                 new AlertDialog.Builder(VisualActivity.this)
                         .setTitle("Conferma")
-                        .setMessage("Sei sicuro di voler eliminare questa voce?")
+                        .setMessage("Sei sicuro di voler eliminare questo luogo?")
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String queryDelete="DELETE FROM posti WHERE codice="+codice+";";
+                                String queryDelete="DELETE FROM posto WHERE codice="+codice+";";
                                 db.execSQL(queryDelete);
                                 finish();
                             }
