@@ -2,6 +2,7 @@ package com.example.utente.progettoletsapp;
 
 import android.Manifest;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -23,12 +24,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -62,7 +68,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
         //Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -92,6 +97,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
         menu.setNavigationItemSelectedListener(ls);
+        EditText txt=(EditText)findViewById(R.id.editText);
+        TextView.OnEditorActionListener ls1=new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                bSearch();
+                return true;
+            }
+        };
+        txt.setOnEditorActionListener(ls1);
+
 
     }
 
@@ -104,7 +119,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
             //Premuto il tasto di ricerca
             case R.id.bSearch:
-                Toast.makeText(this, "Latitudine: "+Double.toString(mLastLocation.getLatitude())+" Longitudine"+Double.toString(mLastLocation.getLongitude()), Toast.LENGTH_LONG).show();
+                bSearch();
                 break;
             //Premuto il tasto di salvataggio
             case R.id.bSave:
@@ -128,6 +143,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
     }
+    public void bSearch()
+    {   EditText txt=(EditText)findViewById(R.id.editText);
+        if(txt.getText().toString().isEmpty())
+            Toast.makeText(this, "Non è possibile ricercare senza inserire una parola chiave", Toast.LENGTH_SHORT).show();
+        else
+        {   Intent i=new Intent(MapsActivity.this,RicercaActivity.class);
+            i.putExtra("edRic",txt.getText().toString());
+            startActivity(i);
+        }
+    }
+
 
 
     /**
