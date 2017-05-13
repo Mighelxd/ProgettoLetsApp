@@ -111,6 +111,34 @@ public class SalvaLuogoActivity extends Activity {
         };
         spinnerSTipo.setOnItemSelectedListener(ls2);
 
+        if(getIntent().getIntExtra("codRichiesta",0)==2) {
+            String queryInizMod="SELECT p.nome, p.latitudine, p.longitudine, p.dataSalvataggio, p.descrizione, p.Nstelle, s.descrizione, t.codice " +
+                    "FROM posto AS p, sottotipo AS s, tipo AS t " +
+                    "WHERE p.cod_Stipo=s.codice AND s.cod_tipo=t.codice AND p.codice="+getIntent().getStringExtra("codice")+";";
+            Cursor cursor=db.rawQuery(queryInizMod,null);
+            if(cursor.moveToFirst()) {
+                nome=cursor.getString(0);
+                latitudine=cursor.getString(1);
+                longitudine=cursor.getString(2);
+                dataSalvataggio=cursor.getString(3);
+                descrizione=cursor.getString(4);
+                Nstelle=cursor.getString(5);
+                String sCodice=cursor.getString(6);
+                int tCodice=Integer.parseInt(cursor.getString(7));
+
+                eNome.setText(nome);
+                eDesc.setText(descrizione);
+                ImageView[] stlAr={(ImageView)findViewById(R.id.stl1),(ImageView) findViewById(R.id.stl2),(ImageView) findViewById(R.id.stl3),(ImageView) findViewById(R.id.stl4),(ImageView) findViewById(R.id.stl5)};
+                stlAr[Integer.parseInt(Nstelle)].performClick();
+
+                spinnerTipo.setSelection(tCodice);
+
+                for(int i=0;sCodice.equals(spinnerSTipo.getItemAtPosition(i).toString());++i)
+                    if(sCodice.equals(spinnerSTipo.getItemAtPosition(i).toString()))
+                        spinnerSTipo.setSelection(i);
+
+            }
+        }
 
     }
 
@@ -142,8 +170,7 @@ public class SalvaLuogoActivity extends Activity {
         }
     }
 
-    public void primoSalva(){
-        //latitudine e longitudine
+    private void primoSalva(){
         latitudine=getIntent().getStringExtra("latitudine");
         longitudine=getIntent().getStringExtra("longitudine");
         Date cal = new Date();
@@ -157,7 +184,11 @@ public class SalvaLuogoActivity extends Activity {
         finish();
     }
 
-    public void modifica() {
+    private void modifica() {
+
+    }
+
+    private void inizMod() {
 
     }
 }
