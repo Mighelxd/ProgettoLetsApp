@@ -40,11 +40,11 @@ public class RicercaActivity extends AppCompatActivity {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ricerca);
-        codRichiesta=getIntent().getIntExtra("codRichiesta",1);
-        edRic=(EditText) findViewById(R.id.editText);
+        codRichiesta = getIntent().getIntExtra("codRichiesta", 1);
+        edRic = (EditText) findViewById(R.id.editText);
 
         edRic.setText(getIntent().getStringExtra("edRic"));
-        TextView.OnEditorActionListener ls1=new TextView.OnEditorActionListener() {
+        TextView.OnEditorActionListener ls1 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 bSearch();
@@ -53,29 +53,30 @@ public class RicercaActivity extends AppCompatActivity {
         };
         edRic.setOnEditorActionListener(ls1);
 
-        databasePosti=new DatabasePosti(RicercaActivity.this);
-        db=databasePosti.getReadableDatabase();
+        databasePosti = new DatabasePosti(RicercaActivity.this);
+        db = databasePosti.getReadableDatabase();
 
-        lista=(ListView) findViewById(R.id.listaPosti);
-        numVoci=0;
+        lista = (ListView) findViewById(R.id.listaPosti);
+        numVoci = 0;
         bSearch();
-        AdapterView.OnItemClickListener ls2=new AdapterView.OnItemClickListener() {
+        AdapterView.OnItemClickListener ls2 = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i=new Intent(RicercaActivity.this,VisualActivity.class);
-                i.putExtra("codice",codiciRic[position]);
+                Intent i = new Intent(RicercaActivity.this, VisualActivity.class);
+                i.putExtra("codice", codiciRic[position]);
                 startActivity(i);
             }
         };
         lista.setOnItemClickListener(ls2);
 
     }
-    public void buttonClicked(View v){
+
+    public void buttonClicked(View v) {
         bSearch();
     }
-    public void bSearch(){
-        switch(codRichiesta)
-        {
+
+    public void bSearch() {
+        switch (codRichiesta) {
             case 1:
                 ric();
                 break;
@@ -88,19 +89,20 @@ public class RicercaActivity extends AppCompatActivity {
         }
 
     }
-    public void ric(){
-        testoRic=edRic.getText().toString();
-        String queryRic="SELECT p.codice,p.nome FROM posto AS p, sottotipo AS s, tipo AS t " +
-                "WHERE p.cod_Stipo=s.codice AND s.cod_tipo=t.codice AND (p.nome LIKE '%"+testoRic+"%' " +
-                "OR p.descrizione LIKE '%"+testoRic+"%' OR s.descrizione LIKE '%"+testoRic+"%' OR t.descrizione LIKE '%"+testoRic+"%') " +
+
+    public void ric() {
+        testoRic = edRic.getText().toString();
+        String queryRic = "SELECT p.codice,p.nome FROM posto AS p, sottotipo AS s, tipo AS t " +
+                "WHERE p.cod_Stipo=s.codice AND s.cod_tipo=t.codice AND (p.nome LIKE '%" + testoRic + "%' " +
+                "OR p.descrizione LIKE '%" + testoRic + "%' OR s.descrizione LIKE '%" + testoRic + "%' OR t.descrizione LIKE '%" + testoRic + "%') " +
                 "ORDER BY p.Nstelle;";
 
-        Cursor cursor=db.rawQuery(queryRic,null);
-        numVoci=0;
-        if(cursor.getCount()>0) {
-            nomiRic=new String[cursor.getCount()];
-            codiciRic=new String[cursor.getCount()];
-            if(cursor.moveToFirst())
+        Cursor cursor = db.rawQuery(queryRic, null);
+        numVoci = 0;
+        if (cursor.getCount() > 0) {
+            nomiRic = new String[cursor.getCount()];
+            codiciRic = new String[cursor.getCount()];
+            if (cursor.moveToFirst())
                 do {
                     codiciRic[numVoci] = cursor.getString(0);
                     nomiRic[numVoci++] = cursor.getString(1);
@@ -108,24 +110,24 @@ public class RicercaActivity extends AppCompatActivity {
                 } while (cursor.moveToNext());
 
 
-            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this,android.R.layout.simple_list_item_1,nomiRic));
-        }
-        else {
-            numVoci=0;
-            nomiRic=new String[numVoci];
-            codiciRic=new String[numVoci];
-            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this,android.R.layout.simple_list_item_1,nomiRic));
-            Toast.makeText(RicercaActivity.this,"Nessun posto trovato!",Toast.LENGTH_SHORT).show();
+            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
+        } else {
+            numVoci = 0;
+            nomiRic = new String[numVoci];
+            codiciRic = new String[numVoci];
+            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
+            Toast.makeText(RicercaActivity.this, "Nessun posto trovato!", Toast.LENGTH_SHORT).show();
         }
     }
-    public void all(){
-        String queryRic="SELECT p.codice,p.nome FROM posto as p; ";
-        Cursor cursor=db.rawQuery(queryRic,null);
-        numVoci=0;
-        if(cursor.getCount()>0) {
-            nomiRic=new String[cursor.getCount()];
-            codiciRic=new String[cursor.getCount()];
-            if(cursor.moveToFirst())
+
+    public void all() {
+        String queryRic = "SELECT p.codice,p.nome FROM posto as p; ";
+        Cursor cursor = db.rawQuery(queryRic, null);
+        numVoci = 0;
+        if (cursor.getCount() > 0) {
+            nomiRic = new String[cursor.getCount()];
+            codiciRic = new String[cursor.getCount()];
+            if (cursor.moveToFirst())
                 do {
                     codiciRic[numVoci] = cursor.getString(0);
                     nomiRic[numVoci++] = cursor.getString(1);
@@ -133,25 +135,26 @@ public class RicercaActivity extends AppCompatActivity {
                 } while (cursor.moveToNext());
 
 
-            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this,android.R.layout.simple_list_item_1,nomiRic));
-        }
-        else {
-            numVoci=0;
-            nomiRic=new String[numVoci];
-            codiciRic=new String[numVoci];
-            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this,android.R.layout.simple_list_item_1,nomiRic));
-            Toast.makeText(RicercaActivity.this,"Nessun posto trovato!",Toast.LENGTH_SHORT).show();
+            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
+        } else {
+            numVoci = 0;
+            nomiRic = new String[numVoci];
+            codiciRic = new String[numVoci];
+            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
+            Toast.makeText(RicercaActivity.this, "Nessun posto trovato!", Toast.LENGTH_SHORT).show();
         }
     }
-    public void liked()
-    {
-        String queryRic="SELECT p.codice,p.nome FROM posto as p WHERE p.Nstelle=4 || p.Nstelle=5; ";
-        Cursor cursor=db.rawQuery(queryRic,null);
-        numVoci=0;
-        if(cursor.getCount()>0) {
-            nomiRic=new String[cursor.getCount()];
-            codiciRic=new String[cursor.getCount()];
-            if(cursor.moveToFirst())
+
+    public void liked() {
+        String queryRic = "SELECT p.codice,p.nome FROM posto as p " +
+                "WHERE p.Nstelle=4 OR p.Nstelle=5 "+
+                "ORDER BY p.Nstelle;";
+        Cursor cursor = db.rawQuery(queryRic, null);
+        numVoci = 0;
+        if (cursor.getCount() > 0) {
+            nomiRic = new String[cursor.getCount()];
+            codiciRic = new String[cursor.getCount()];
+            if (cursor.moveToFirst())
                 do {
                     codiciRic[numVoci] = cursor.getString(0);
                     nomiRic[numVoci++] = cursor.getString(1);
@@ -159,14 +162,13 @@ public class RicercaActivity extends AppCompatActivity {
                 } while (cursor.moveToNext());
 
 
-            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this,android.R.layout.simple_list_item_1,nomiRic));
-        }
-        else {
-            numVoci=0;
-            nomiRic=new String[numVoci];
-            codiciRic=new String[numVoci];
-            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this,android.R.layout.simple_list_item_1,nomiRic));
-            Toast.makeText(RicercaActivity.this,"Nessun posto trovato!",Toast.LENGTH_SHORT).show();
+            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
+        } else {
+            numVoci = 0;
+            nomiRic = new String[numVoci];
+            codiciRic = new String[numVoci];
+            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
+            Toast.makeText(RicercaActivity.this, "Nessun posto trovato!", Toast.LENGTH_SHORT).show();
         }
 
     }
