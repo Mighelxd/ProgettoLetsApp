@@ -16,8 +16,6 @@ public class RicercaActivity extends AppCompatActivity {
 
     private String testoRic;
     private EditText edRic;
-
-    private
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
