@@ -158,7 +158,13 @@ public class SalvaLuogoActivity extends Activity {
     }
 
     private void modifica() {
-
+        String queryMod="UPDATE posto " +
+                "SET nome='"+nome+"', latitudine="+latitudine+", longitudine="+longitudine+", dataSalvataggio='"+dataSalvataggio+"', " +
+                "descrizione='"+descrizione+"', Nstelle="+Nstelle+", cod_Stipo="+cod_Stipo+" " +
+                "WHERE codice="+getIntent().getStringExtra("codice")+";";
+        db.execSQL(queryMod);
+        Toast.makeText(this, "Posto modificato.", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     private void inizMod() {
