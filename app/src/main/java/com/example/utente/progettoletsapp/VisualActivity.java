@@ -95,7 +95,7 @@ public class VisualActivity extends AppCompatActivity {
             if(v.getId()==R.id.bMod){
                 Intent intent=new Intent(VisualActivity.this,SalvaLuogoActivity.class);
                 intent.putExtra("codice",codice);
-                intent.putExtra("codRichiesta","2");
+                intent.putExtra("codRichiesta",2);
                 startActivity(intent);
             }
             if(v.getId()==R.id.bPer){
