@@ -121,30 +121,33 @@
         <Button
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginStart="40dp"
+            android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:background="@drawable/oval_box"
             android:drawableStart="@drawable/ic_delete_black_48dp"
-            android:paddingLeft="11dp"
-            android:id="@+id/bCanc"/>
+            android:paddingLeft="30dp"
+            android:id="@+id/bCanc"
+            android:onClick="buttonClicked"/>
         <Button
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginStart="50dp"
+            android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:background="@drawable/oval_box"
             android:drawableStart="@drawable/ic_update_black_48dp"
-            android:paddingLeft="11dp"
-            android:id="@+id/bMod"/>
+            android:paddingLeft="30dp"
+            android:id="@+id/bMod"
+            android:onClick="buttonClicked"/>
         <Button
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginStart="50dp"
+            android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:background="@drawable/oval_box"
             android:drawableStart="@drawable/ic_navigation_black_48dp"
-            android:paddingLeft="11dp"
-            android:id="@+id/bPer"/>
+            android:paddingLeft="30dp"
+            android:id="@+id/bPer"
+            android:onClick="buttonClicked"/>
     </LinearLayout>
 
 
