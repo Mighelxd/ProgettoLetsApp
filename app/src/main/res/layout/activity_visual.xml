@@ -126,7 +126,8 @@
             android:background="@drawable/oval_box"
             android:drawableStart="@drawable/ic_delete_black_48dp"
             android:paddingLeft="11dp"
-            android:id="@+id/bCanc"/>
+            android:id="@+id/bCanc"
+            android:onClick="buttonClicked"/>
         <Button
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -135,7 +136,8 @@
             android:background="@drawable/oval_box"
             android:drawableStart="@drawable/ic_update_black_48dp"
             android:paddingLeft="11dp"
-            android:id="@+id/bMod"/>
+            android:id="@+id/bMod"
+            android:onClick="buttonClicked"/>
         <Button
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -144,7 +146,8 @@
             android:background="@drawable/oval_box"
             android:drawableStart="@drawable/ic_navigation_black_48dp"
             android:paddingLeft="11dp"
-            android:id="@+id/bPer"/>
+            android:id="@+id/bPer"
+            android:onClick="buttonClicked"/>
     </LinearLayout>
 
 
