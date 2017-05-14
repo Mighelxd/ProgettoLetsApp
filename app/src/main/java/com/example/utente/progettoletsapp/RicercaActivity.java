@@ -176,6 +176,16 @@ public class RicercaActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ric();
+        switch (codRichiesta) {
+            case 1:
+                ric();
+                break;
+            case 2:
+                all();
+                break;
+            case 3:
+                liked();
+                break;
+        }
     }
 }
