@@ -26,24 +26,30 @@ public class VisualActivity extends AppCompatActivity {
     private String descrizione;
     private String Nstelle;
 
+    private TextView txtnom,txttip,txtstip,txtds,txtdescr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visual);
 
-        final TextView txtnom=(TextView) findViewById(R.id.txtnom);
-        final TextView txttip=(TextView) findViewById(R.id.txttip);
-        final TextView txtstip=(TextView) findViewById(R.id.txtstip);
-        final TextView txtds=(TextView) findViewById(R.id.txtds);
-        final TextView txtdescr=(TextView) findViewById(R.id.txtdescr);
+        txtnom=(TextView) findViewById(R.id.txtnom);
+        txttip=(TextView) findViewById(R.id.txttip);
+        txtstip=(TextView) findViewById(R.id.txtstip);
+        txtds=(TextView) findViewById(R.id.txtds);
+        txtdescr=(TextView) findViewById(R.id.txtdescr);
 
-        ImageView[] stlar={(ImageView)findViewById(R.id.stl1),(ImageView) findViewById(R.id.stl2),(ImageView) findViewById(R.id.stl3),(ImageView) findViewById(R.id.stl4),(ImageView) findViewById(R.id.stl5)};
+
 
         codice=getIntent().getStringExtra("codice");
 
         databasePosti=new DatabasePosti(this);
         db=databasePosti.getReadableDatabase();
 
+        visualizzaDati();
+    }
+
+    private void visualizzaDati() {
         String queryStr="SELECT p.nome,t.descrizione,st.descrizione,p.dataSalvataggio,p.descrizione,p.Nstelle " +
                 "FROM posto AS p,tipo AS t,sottotipo AS st " +
                 "WHERE p.cod_Stipo=st.codice AND st.cod_tipo=t.codice AND p.codice="+codice+"; ";
@@ -58,19 +64,21 @@ public class VisualActivity extends AppCompatActivity {
             descrizione=cursor.getString(4);
             Nstelle=cursor.getString(5);
         }
-        txtnom.setText(nome);
-        txttip.setText(txttip.getText().toString()+" "+tipo);
-        txtstip.setText(txtstip.getText().toString()+" "+stipo);
-        txtds.setText(txtds.getText().toString()+" "+dataSalvataggio);
-        txtdescr.setText(txtdescr.getText().toString()+" "+descrizione);
 
+        txtnom.setText(nome);
+        txttip.setText("TIPO: "+tipo);
+        txtstip.setText("SOTTOTIPO: "+stipo);
+        txtds.setText("DATA: "+dataSalvataggio);
+        txtdescr.setText("DESCRIZIONE: "+descrizione);
+
+        ImageView[] stlar={(ImageView)findViewById(R.id.stl1),(ImageView) findViewById(R.id.stl2),(ImageView) findViewById(R.id.stl3),(ImageView) findViewById(R.id.stl4),(ImageView) findViewById(R.id.stl5)};
         for(int i=5;i>Integer.parseInt(Nstelle);--i)
         {
             stlar[i-1].setVisibility(View.INVISIBLE);
         }
     }
 
-        public void buttonClicked(View v){
+    public void buttonClicked(View v){
             if(v.getId()==R.id.bCanc){
                 new AlertDialog.Builder(VisualActivity.this)
                         .setTitle("Conferma")
@@ -102,5 +110,12 @@ public class VisualActivity extends AppCompatActivity {
                 Intent i=new Intent(VisualActivity.this,PercorsoActivity.class);
                 startActivity(i);
             }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        visualizzaDati();
     }
 }
