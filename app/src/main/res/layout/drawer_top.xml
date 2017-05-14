@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#2491df"
+    android:layout_height="250dp"
+    android:background="@drawable/sfondomenulat"
     android:padding="20dp">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PROGETTO LET'S APP"
         android:textSize="30dp"
         android:textColor="#000"
         android:textStyle="bold"
