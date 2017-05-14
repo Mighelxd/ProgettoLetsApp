@@ -141,7 +141,7 @@ public class RicercaActivity extends AppCompatActivity {
             nomiRic = new String[numVoci];
             codiciRic = new String[numVoci];
             lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
-            Toast.makeText(RicercaActivity.this, "Nessun posto ancora inserito!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RicercaActivity.this, "Nessun posto è stato ancora inserito!", Toast.LENGTH_SHORT).show();
         }
     }
 
