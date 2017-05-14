@@ -115,7 +115,7 @@ public class SalvaLuogoActivity extends Activity {
 
     public void buttonClickedSave(View v) {
         nome = eNome.getText().toString();
-
+        descrizione = eDesc.getText().toString();
         if (nome.equals(""))
             Toast.makeText(SalvaLuogoActivity.this, "Devi inserire un nome!", Toast.LENGTH_SHORT).show();
         else {
@@ -135,13 +135,13 @@ public class SalvaLuogoActivity extends Activity {
         longitudine = getIntent().getStringExtra("longitudine");
         Date cal = new Date();
         dataSalvataggio = cal.toString();
-        descrizione = eDesc.getText().toString();
+
         String queryInsPosto = "INSERT INTO posto " +
                 "(nome,latitudine,longitudine,dataSalvataggio,descrizione,Nstelle,cod_Stipo)" +
                 "VALUES ('" + nome + "'," + latitudine + "," + longitudine + ",'" + dataSalvataggio + "','" + descrizione + "'," + Nstelle + "," + cod_Stipo + ");";
         db.execSQL(queryInsPosto);
         Toast.makeText(this, "Posto salvato.", Toast.LENGTH_SHORT).show();
-        finish();//
+        finish();
     }
 
     private void modifica() {
