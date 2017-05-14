@@ -30,6 +30,8 @@ public class SalvaLuogoActivity extends Activity {
 
     private String codiciST[];
 
+    private int indexST;
+
     private String nome;
     private String latitudine;
     private String longitudine;
@@ -44,6 +46,7 @@ public class SalvaLuogoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salva_luogo);
         Nstelle="1";
+        cod_Stipo="1";
         eDesc = (EditText) findViewById(R.id.edtxtdescr);
         eNome = (EditText) findViewById(R.id.edtxtnom);
         spinnerTipo = (Spinner) findViewById(R.id.spintipo);
@@ -152,7 +155,7 @@ public class SalvaLuogoActivity extends Activity {
     }
 
     private void inizMod() {
-        String queryInizMod = "SELECT p.nome, p.latitudine, p.longitudine, p.dataSalvataggio, p.descrizione, p.Nstelle, s.descrizione, t.descrizione " +
+        String queryInizMod = "SELECT p.nome, p.latitudine, p.longitudine, p.dataSalvataggio, p.descrizione, p.Nstelle, s.descrizione, t.descrizione, s.codice " +
                 "FROM posto AS p, sottotipo AS s, tipo AS t " +
                 "WHERE p.cod_Stipo=s.codice AND s.cod_tipo=t.codice AND p.codice=" + getIntent().getStringExtra("codice") + ";";
         Cursor cursor1 = db.rawQuery(queryInizMod, null);
@@ -165,6 +168,7 @@ public class SalvaLuogoActivity extends Activity {
             Nstelle = cursor1.getString(5);
             String sDesc = cursor1.getString(6);
             String tDesc = cursor1.getString(7);
+            cod_Stipo=cursor1.getString(8);
             int i=0;
             eNome.setText(nome);
             eDesc.setText(descrizione);
@@ -173,10 +177,9 @@ public class SalvaLuogoActivity extends Activity {
             for(i = 0; i <= spinnerTipo.getAdapter().getCount() && !spinnerTipo.getItemAtPosition(i).toString().equals(tDesc); ++i);
             spinnerTipo.setSelection(i,true);
             inizSTipo(i);
-            spinnerSTipo=(Spinner)findViewById(R.id.spinstipo);
+
             for(i = 0;  i<= spinnerSTipo.getAdapter().getCount() && !spinnerSTipo.getItemAtPosition(i).toString().equals(sDesc); ++i);
-            Toast.makeText(this, sDesc, Toast.LENGTH_SHORT).show();
-            spinnerSTipo.setSelection(i,true);
+            indexST=i;
 
         }
 
@@ -201,5 +204,6 @@ public class SalvaLuogoActivity extends Activity {
             spinnerSTipo.setVisibility(View.INVISIBLE);
             txt.setVisibility(View.INVISIBLE);
         }
+        spinnerSTipo.setSelection(indexST,true);
     }
 }
