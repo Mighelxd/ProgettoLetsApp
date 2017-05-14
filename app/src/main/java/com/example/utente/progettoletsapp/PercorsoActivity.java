@@ -45,6 +45,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     private Location mLastLocation;
     private String origin;
     private String destination;
+    private Double lat,lon;
     private int cont = 0;
     private List<Marker> originMarkers = new ArrayList<>();
     private List<Marker> destinationMarkers = new ArrayList<>();
@@ -90,6 +91,9 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
+        lat=40.868670;
+        lon=14.451707;
+        destination = new String(Double.toString(lat)+","+Double.toString(lon));
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -114,6 +118,13 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
 
+        LatLng latLng = new LatLng(lat, lon);
+        destinationMarkers.add(mMap.addMarker(new MarkerOptions()
+                .title("destinazione")
+                .position(latLng)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
+
     }
 
     @Override
@@ -128,13 +139,6 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
 
     @Override
     public void onLocationChanged(Location location) {
-        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        if (cont == 0) {
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
-
-            ++cont;
-        }
         if (location != null) {
             mLastLocation = location;
         }
@@ -163,7 +167,6 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
 
     public void bCalcPer() {
         origin = new String(Double.toString(mLastLocation.getLatitude()) + "," + Double.toString(mLastLocation.getLongitude()));
-        destination = new String(getIntent().getStringExtra("latitude") + "," + getIntent().getStringExtra("longitude"));
         try {
             new DirectionFinder(this, origin, destination).execute();
         } catch (UnsupportedEncodingException e) {
@@ -173,8 +176,8 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
 
     @Override
     public void onDirectionFinderStart() {
-        progressDialog = ProgressDialog.show(this, "Attendere prego.",
-                "Calcolando il percorso..!", true);
+        progressDialog = ProgressDialog.show(this, "Attendere prego..",
+                "Sto calcolando il percorso...", true);
 
         if (originMarkers != null) {
             for (Marker marker : originMarkers) {
@@ -183,9 +186,9 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         }
 
         if (destinationMarkers != null) {
-            for (Marker marker : destinationMarkers) {
-                marker.remove();
-            }
+                for (Marker marker : destinationMarkers) {
+                    marker.remove();
+                }
         }
 
         if (polylinePaths != null) {
