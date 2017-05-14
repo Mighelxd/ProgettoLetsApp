@@ -145,7 +145,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void bSearch() {
         EditText txt = (EditText) findViewById(R.id.editText);
         if (txt.getText().toString().isEmpty())
-            Toast.makeText(this, "Non è possibile ricercare senza inserire una parola chiave", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Inserire una parola chiave per la ricerca!", Toast.LENGTH_SHORT).show();
         else {
             Intent i = new Intent(MapsActivity.this, RicercaActivity.class);
             i.putExtra("edRic", txt.getText().toString());
