@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:layout_margin="16dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.utente.progettoletsapp.InformationActivity"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="INFORMAZIONI"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Finalità app"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textStyle="italic"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="L’app consente di salvare tutti i posti interessanti che si visitano. Con la loro posizione si salvano anche un titolo, tipo di posto e una breve descrizione con la possibilità di poter assegnare un voto in stelle da 1 a 5.
+E' possibile accedere a un menu laterale dove è possibile visualizzare tutti i posti ordinati in base alla valutazione, visualizzare tutti i posti preferiti (con valutazione 4 o 5 stelle), modificare qualsiasi posto, cancellarlo e visualizzarne la posizione, con la possibilità di calcolare un percorso che va dalla propria posizione al momento del calcolo alla posizione della località salvata."
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#000000"
+            android:textStyle="italic"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Autori"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textStyle="italic"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Di Gennaro Marco, D'Avino Michele, Maione Ciro, Esposito Gianluigi, Giaquinto Giuseppe, Mautone Raffaella"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#000000"
+            android:textStyle="italic"
+            />
+    </LinearLayout>
+</ScrollView>

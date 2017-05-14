@@ -88,6 +88,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     case R.id.item2:
                         likedPos();
                         break;
+                    case R.id.item3:
+                        inform();
                 }
                 return true;
             }
@@ -164,6 +166,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent i = new Intent(MapsActivity.this, RicercaActivity.class);
         i.putExtra("edRic", "");
         i.putExtra("codRichiesta", 3);
+        startActivity(i);
+    }
+    public void inform()
+    {   Intent i=new Intent(MapsActivity.this,InformationActivity.class);
         startActivity(i);
     }
 

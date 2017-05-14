@@ -11,5 +11,10 @@
             android:checked="false"
             android:title="POSTI PREFERITI">
         </item>
+        <item
+            android:id="@+id/item3"
+            android:checked="false"
+            android:title="INFORMAZIONI">
+        </item>
     </group>
 </menu>

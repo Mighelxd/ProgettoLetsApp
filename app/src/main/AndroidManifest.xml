@@ -48,7 +48,8 @@
         <activity android:name=".VisualActivity" />
         <activity
             android:name=".PercorsoActivity"
-            android:label="@string/title_activity_percorso"></activity>
+            android:label="@string/title_activity_percorso" />
+        <activity android:name=".InformationActivity"></activity>
     </application>
 
 </manifest>
