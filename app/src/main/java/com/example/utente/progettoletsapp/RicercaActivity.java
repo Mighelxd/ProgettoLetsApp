@@ -141,7 +141,7 @@ public class RicercaActivity extends AppCompatActivity {
             nomiRic = new String[numVoci];
             codiciRic = new String[numVoci];
             lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
-            Toast.makeText(RicercaActivity.this, "Nessun posto trovato!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RicercaActivity.this, "Nessun posto ancora inserito!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -168,8 +168,24 @@ public class RicercaActivity extends AppCompatActivity {
             nomiRic = new String[numVoci];
             codiciRic = new String[numVoci];
             lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
-            Toast.makeText(RicercaActivity.this, "Nessun posto trovato!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RicercaActivity.this, "Nessun posto preferito!", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        switch (codRichiesta) {
+            case 1:
+                ric();
+                break;
+            case 2:
+                all();
+                break;
+            case 3:
+                liked();
+                break;
+        }
     }
 }
