@@ -54,7 +54,7 @@ E' possibile accedere a un menu laterale dove è possibile visualizzare tutti i 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Di Gennaro Marco, D'Avino Michele, Maione Ciro, Esposito Gianluigi, Giaquinto Giuseppe, Mautone Raffaella"
+            android:text="Di Gennaro Marco, D'Avino Michele, Maione Ciro, Esposito Gianluigi, Giaquinto Giuseppe"
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
