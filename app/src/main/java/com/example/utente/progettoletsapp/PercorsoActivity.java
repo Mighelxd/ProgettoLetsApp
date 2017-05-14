@@ -91,8 +91,8 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
-        lat=40.868670;
-        lon=14.451707;
+        lat=Double.parseDouble(getIntent().getStringExtra("latitude"));
+        lon=Double.parseDouble(getIntent().getStringExtra("longitude"));
         destination = new String(Double.toString(lat)+","+Double.toString(lon));
     }
 
