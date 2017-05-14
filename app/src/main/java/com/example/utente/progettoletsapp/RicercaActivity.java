@@ -91,32 +91,35 @@ public class RicercaActivity extends AppCompatActivity {
     }
 
     public void ric() {
+
         testoRic = edRic.getText().toString();
         String queryRic = "SELECT p.codice,p.nome FROM posto AS p, sottotipo AS s, tipo AS t " +
                 "WHERE p.cod_Stipo=s.codice AND s.cod_tipo=t.codice AND (p.nome LIKE '%" + testoRic + "%' " +
                 "OR p.descrizione LIKE '%" + testoRic + "%' OR s.descrizione LIKE '%" + testoRic + "%' OR t.descrizione LIKE '%" + testoRic + "%') " +
                 "ORDER BY p.Nstelle;";
-
-        Cursor cursor = db.rawQuery(queryRic, null);
-        numVoci = 0;
-        if (cursor.getCount() > 0) {
-            nomiRic = new String[cursor.getCount()];
-            codiciRic = new String[cursor.getCount()];
-            if (cursor.moveToFirst())
-                do {
-                    codiciRic[numVoci] = cursor.getString(0);
-                    nomiRic[numVoci++] = cursor.getString(1);
-
-                } while (cursor.moveToNext());
-
-
-            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
-        } else {
+        if(testoRic.isEmpty()) Toast.makeText(RicercaActivity.this,"Inserire una parola chiave per la ricerca!",Toast.LENGTH_SHORT).show();
+        else {
+            Cursor cursor = db.rawQuery(queryRic, null);
             numVoci = 0;
-            nomiRic = new String[numVoci];
-            codiciRic = new String[numVoci];
-            lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
-            Toast.makeText(RicercaActivity.this, "Nessun posto trovato!", Toast.LENGTH_SHORT).show();
+            if (cursor.getCount() > 0) {
+                nomiRic = new String[cursor.getCount()];
+                codiciRic = new String[cursor.getCount()];
+                if (cursor.moveToFirst())
+                    do {
+                        codiciRic[numVoci] = cursor.getString(0);
+                        nomiRic[numVoci++] = cursor.getString(1);
+
+                    } while (cursor.moveToNext());
+
+
+                lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
+            } else {
+                numVoci = 0;
+                nomiRic = new String[numVoci];
+                codiciRic = new String[numVoci];
+                lista.setAdapter(new ArrayAdapter<String>(RicercaActivity.this, android.R.layout.simple_list_item_1, nomiRic));
+                Toast.makeText(RicercaActivity.this, "Nessun posto trovato!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
