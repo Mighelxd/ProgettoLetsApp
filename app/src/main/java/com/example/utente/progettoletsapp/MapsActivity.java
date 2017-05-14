@@ -139,7 +139,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void bPos() {
         LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
     }
 
     public void bSearch() {
@@ -215,7 +215,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (cont == 0) {
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
             ++cont;
         }
         if (location != null) {

@@ -123,7 +123,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
                 .title("destinazione")
                 .position(latLng)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
 
     }
 
@@ -162,7 +162,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     public void bPos() {
         LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
     }
 
     public void bCalcPer() {
