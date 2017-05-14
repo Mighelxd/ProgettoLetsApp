@@ -132,7 +132,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent i1 = new Intent(MapsActivity.this, SalvaLuogoActivity.class);
         i1.putExtra("codRichiesta",1);
         i1.putExtra("latitudine", Double.toString(mLastLocation.getLatitude()));
-        i1.putExtra("longitudine", Double.toString(mLastLocation.getLatitude()));
+        i1.putExtra("longitudine", Double.toString(mLastLocation.getLongitude()));
         startActivity(i1);
     }
 
