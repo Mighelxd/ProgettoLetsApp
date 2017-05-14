@@ -45,7 +45,10 @@
         </activity>
         <activity android:name=".SalvaLuogoActivity" />
         <activity android:name=".RicercaActivity" />
-        <activity android:name=".VisualActivity"></activity>
+        <activity android:name=".VisualActivity" />
+        <activity
+            android:name=".PercorsoActivity"
+            android:label="@string/title_activity_percorso"></activity>
     </application>
 
 </manifest>

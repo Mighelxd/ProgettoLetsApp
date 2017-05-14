@@ -99,7 +99,8 @@ public class VisualActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             if(v.getId()==R.id.bPer){
-                Toast.makeText(VisualActivity.this,"Premuto Percorso",Toast.LENGTH_LONG).show();
+                Intent i=new Intent(VisualActivity.this,PercorsoActivity.class);
+                startActivity(i);
             }
     }
 }
