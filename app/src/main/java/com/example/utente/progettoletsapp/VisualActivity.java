@@ -25,6 +25,8 @@ public class VisualActivity extends AppCompatActivity {
     private String dataSalvataggio;
     private String descrizione;
     private String Nstelle;
+    private String lat;
+    private String lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class VisualActivity extends AppCompatActivity {
         databasePosti=new DatabasePosti(this);
         db=databasePosti.getReadableDatabase();
 
-        String queryStr="SELECT p.nome,t.descrizione,st.descrizione,p.dataSalvataggio,p.descrizione,p.Nstelle " +
+        String queryStr="SELECT p.nome,t.descrizione,st.descrizione,p.dataSalvataggio,p.descrizione,p.Nstelle,p.latitudine,p.longitudine " +
                 "FROM posto AS p,tipo AS t,sottotipo AS st " +
                 "WHERE p.cod_Stipo=st.codice AND st.cod_tipo=t.codice AND p.codice="+codice+"; ";
 
@@ -57,13 +59,15 @@ public class VisualActivity extends AppCompatActivity {
             dataSalvataggio=cursor.getString(3);
             descrizione=cursor.getString(4);
             Nstelle=cursor.getString(5);
+            lat=cursor.getString(6);
+            lon=cursor.getString(7);
         }
         txtnom.setText(nome);
         txttip.setText(txttip.getText().toString()+" "+tipo);
         txtstip.setText(txtstip.getText().toString()+" "+stipo);
         txtds.setText(txtds.getText().toString()+" "+dataSalvataggio);
         txtdescr.setText(txtdescr.getText().toString()+" "+descrizione);
-
+        Toast.makeText(this, lat+lon, Toast.LENGTH_SHORT).show();
         for(int i=5;i>Integer.parseInt(Nstelle);--i)
         {
             stlar[i-1].setVisibility(View.INVISIBLE);
@@ -100,6 +104,8 @@ public class VisualActivity extends AppCompatActivity {
             }
             if(v.getId()==R.id.bPer){
                 Intent i=new Intent(VisualActivity.this,PercorsoActivity.class);
+                i.putExtra("latitude",lat);
+                i.putExtra("longitude",lon);
                 startActivity(i);
             }
     }

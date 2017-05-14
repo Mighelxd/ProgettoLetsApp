@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -31,6 +32,8 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
     private Location mLastLocation;
+    private String origin;
+    private String destination;
     private int cont=0;
 
     @Override
@@ -73,6 +76,12 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
     }
+    private void sendRequest()
+    {
+        destination=new String(getIntent().getStringExtra("latitude")+","+getIntent().getStringExtra("longitude"));
+        bPos();
+        Toast.makeText(this, destination+origin, Toast.LENGTH_SHORT).show();
+    }
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -93,6 +102,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
                 == PackageManager.PERMISSION_GRANTED) {
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
+        sendRequest();
 
     }
 
@@ -112,10 +122,12 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
+
             ++cont;
         }
         if (location != null) {
             mLastLocation = location;
+            origin=new String(Double.toString(location.getLatitude())+","+Double.toString(location.getLongitude()));
         }
 
 
@@ -131,6 +143,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     }
     public void bPos() {
         LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+        origin=new String(Double.toString(mLastLocation.getLatitude())+","+Double.toString(mLastLocation.getLongitude()));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
     }
