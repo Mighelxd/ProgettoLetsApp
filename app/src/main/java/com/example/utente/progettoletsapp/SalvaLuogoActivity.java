@@ -141,7 +141,7 @@ public class SalvaLuogoActivity extends Activity {
                 "VALUES ('" + nome + "'," + latitudine + "," + longitudine + ",'" + dataSalvataggio + "','" + descrizione + "'," + Nstelle + "," + cod_Stipo + ");";
         db.execSQL(queryInsPosto);
         Toast.makeText(this, "Posto salvato.", Toast.LENGTH_SHORT).show();
-        finish();
+        finish();//
     }
 
     private void modifica() {
