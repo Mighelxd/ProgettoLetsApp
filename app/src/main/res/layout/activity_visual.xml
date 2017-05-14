@@ -8,11 +8,12 @@
     tools:context="com.example.utente.progettoletsapp.VisualActivity"
     android:orientation="vertical"
     android:background="#ffffff">
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="0.95">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +36,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tipo"
+            android:text="Tipo  :  "
             android:textColor="#000000"
             android:textSize="20dp"
             android:layout_weight="0.6"
@@ -44,7 +45,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sottotipo"
+            android:text="Sottotipo  :  "
             android:textColor="#000000"
             android:textSize="20dp"
             android:layout_weight="0.6"
@@ -98,7 +99,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Data Salvataggio"
+            android:text="Data Salvataggio  :"
             android:textColor="#000000"
             android:textSize="20dp"
             android:layout_weight="0.6"
@@ -107,12 +108,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descrizione"
+            android:text="Descrizione  :"
             android:textColor="#000000"
             android:textSize="20dp"
             android:layout_weight="1"
             android:id="@+id/txtdescr"/>
-    </LinearLayout>
+    </TableLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
