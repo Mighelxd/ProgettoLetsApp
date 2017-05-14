@@ -144,7 +144,7 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/ic_my_location_black_48dp"
+            android:drawableStart="@drawable/ic_location_on_black_48dp"
             android:paddingLeft="30dp"
             android:id="@+id/bPer"
             android:onClick="buttonClicked"/>
