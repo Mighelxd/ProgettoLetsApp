@@ -44,6 +44,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        destination=new String(getIntent().getStringExtra("latitude")+","+getIntent().getStringExtra("longitude"));
     }
 
 
@@ -76,12 +77,6 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
     }
-    private void sendRequest()
-    {
-        destination=new String(getIntent().getStringExtra("latitude")+","+getIntent().getStringExtra("longitude"));
-        bPos();
-        Toast.makeText(this, destination+origin, Toast.LENGTH_SHORT).show();
-    }
     protected synchronized void buildGoogleApiClient() {
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -89,6 +84,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
                 .addApi(LocationServices.API)
                 .build();
         mGoogleApiClient.connect();
+
     }
 
     @Override
@@ -102,7 +98,6 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
                 == PackageManager.PERMISSION_GRANTED) {
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
-        sendRequest();
 
     }
 
@@ -118,8 +113,8 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
 
     @Override
     public void onLocationChanged(Location location) {
+        LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         if (cont == 0) {
-            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
 
@@ -127,7 +122,6 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         }
         if (location != null) {
             mLastLocation = location;
-            origin=new String(Double.toString(location.getLatitude())+","+Double.toString(location.getLongitude()));
         }
 
 
@@ -138,13 +132,22 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             case R.id.bPos2:
                 bPos();
                 break;
+            case R.id.bCalcPer:
+                bCalcPer();
+                break;
+
         }
 
     }
     public void bPos() {
         LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-        origin=new String(Double.toString(mLastLocation.getLatitude())+","+Double.toString(mLastLocation.getLongitude()));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(20));
+    }
+    public void bCalcPer()
+    {
+        origin=new String(Double.toString(mLastLocation.getLatitude())+","+Double.toString(mLastLocation.getLongitude()));
+
+        Toast.makeText(this, origin+destination, Toast.LENGTH_SHORT).show();
     }
 }
