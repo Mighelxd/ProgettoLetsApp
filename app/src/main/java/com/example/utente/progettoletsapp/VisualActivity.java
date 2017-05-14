@@ -69,7 +69,7 @@ public class VisualActivity extends AppCompatActivity {
         txttip.setText("Tipo  :  "+tipo);
         txtstip.setText("Sottotipo  :  "+stipo);
         txtds.setText("Data Salvataggio  :  "+dataSalvataggio);
-        txtdescr.setText("DESCRIZIONE  :  "+descrizione);
+        txtdescr.setText("Descrizione  :  "+descrizione);
 
         ImageView[] stlar={(ImageView)findViewById(R.id.stl1),(ImageView) findViewById(R.id.stl2),(ImageView) findViewById(R.id.stl3),(ImageView) findViewById(R.id.stl4),(ImageView) findViewById(R.id.stl5)};
         for(int i=5;i>Integer.parseInt(Nstelle);--i)
