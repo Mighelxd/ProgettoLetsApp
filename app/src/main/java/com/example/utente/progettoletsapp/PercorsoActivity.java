@@ -3,6 +3,7 @@ package com.example.utente.progettoletsapp;
 import android.*;
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -154,6 +155,9 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             case R.id.bCalcPer:
                 bCalcPer();
                 break;
+            case R.id.bTornHome:
+                bTornHome();
+                break;
 
         }
 
@@ -172,6 +176,11 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+    }
+
+    public void bTornHome() {
+        Intent i=new Intent(PercorsoActivity.this,MapsActivity.class);
+        startActivity(i);
     }
 
     @Override

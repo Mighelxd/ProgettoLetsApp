@@ -35,6 +35,16 @@
             android:drawableStart="@drawable/ic_navigation_black_48dp"
             android:onClick="buttonClicked"
             android:background="@drawable/oval_box" />
+        <Button
+            android:id="@+id/bTornHome"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="end"
+            android:paddingLeft="5.5dp"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_home_black_48dp"
+            android:onClick="buttonClicked"
+            android:background="@drawable/oval_box" />
 
     </LinearLayout>
 </fragment>
