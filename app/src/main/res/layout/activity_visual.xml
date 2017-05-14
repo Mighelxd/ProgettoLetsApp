@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tipo              :"
+            android:text="Tipo"
             android:textColor="#000000"
             android:textSize="17dp"
             android:layout_weight="0.7"
@@ -44,7 +44,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sottotipo      :"
+            android:text="Sottotipo"
             android:textColor="#000000"
             android:textSize="17dp"
             android:layout_weight="0.7"
@@ -98,7 +98,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Data Salvataggio :"
+            android:text="Data Salvataggio"
             android:textColor="#000000"
             android:textSize="17dp"
             android:layout_weight="0.7"
@@ -107,7 +107,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descrizione :"
+            android:text="Descrizione"
             android:textColor="#000000"
             android:textSize="17dp"
             android:layout_weight="0.9"
@@ -144,7 +144,7 @@
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/ic_navigation_black_48dp"
+            android:drawableStart="@drawable/ic_my_location_black_48dp"
             android:paddingLeft="30dp"
             android:id="@+id/bPer"
             android:onClick="buttonClicked"/>
