@@ -204,6 +204,7 @@ public class SalvaLuogoActivity extends Activity {
             spinnerSTipo.setVisibility(View.INVISIBLE);
             txt.setVisibility(View.INVISIBLE);
         }
-        spinnerSTipo.setSelection(indexST,true);
+        else
+            spinnerSTipo.setSelection(indexST,true);
     }
 }
