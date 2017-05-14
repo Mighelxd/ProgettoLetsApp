@@ -76,6 +76,9 @@ public class VisualActivity extends AppCompatActivity {
         txtdescr.setText(descrizione);
 
         ImageView[] stlar={(ImageView)findViewById(R.id.stl1),(ImageView) findViewById(R.id.stl2),(ImageView) findViewById(R.id.stl3),(ImageView) findViewById(R.id.stl4),(ImageView) findViewById(R.id.stl5)};
+        for(int i=0;i<5;++i){
+            stlar[i].setVisibility(View.VISIBLE);
+        }
         for(int i=5;i>Integer.parseInt(Nstelle);--i)
         {
             stlar[i-1].setVisibility(View.INVISIBLE);
