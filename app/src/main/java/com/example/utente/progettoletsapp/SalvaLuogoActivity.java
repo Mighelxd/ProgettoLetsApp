@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
 import android.icu.util.GregorianCalendar;
 import android.os.Bundle;
@@ -133,8 +135,16 @@ public class SalvaLuogoActivity extends Activity {
     private void primoSalva() {
         latitudine = getIntent().getStringExtra("latitudine");
         longitudine = getIntent().getStringExtra("longitudine");
-        Date cal = new Date();
-        dataSalvataggio = cal.toString();
+        String[] mesi={"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
+        String cd = new Date().toString();
+        int mesei=1;
+        for(int i=0;i<11;++i)
+        {
+            if(cd.substring(4,7).equals(mesi[i])) mesei=i+1;
+        }
+        String meses=String.valueOf(mesei);
+        if(mesei>=1&&mesei<=9) meses="0"+meses;
+        dataSalvataggio = cd.substring(8,10)+"-"+meses+"-"+cd.substring(30,34)+cd.substring(10,19);
 
         String queryInsPosto = "INSERT INTO posto " +
                 "(nome,latitudine,longitudine,dataSalvataggio,descrizione,Nstelle,cod_Stipo)" +
