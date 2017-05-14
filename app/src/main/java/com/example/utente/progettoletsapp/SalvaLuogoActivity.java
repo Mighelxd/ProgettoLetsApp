@@ -150,7 +150,7 @@ public class SalvaLuogoActivity extends Activity {
                 "descrizione='"+descrizione+"', Nstelle="+Nstelle+", cod_Stipo="+cod_Stipo+" " +
                 "WHERE codice="+getIntent().getStringExtra("codice")+";";
         db.execSQL(queryMod);
-        Toast.makeText(this, "Posto modificato.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Informazioni su "+nome+" modificate.", Toast.LENGTH_SHORT).show();
         finish();
     }
 

@@ -13,14 +13,16 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp">
 
-    <ImageView
-        android:id="@+id/bPos2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_location_on_black_48dp"
-        android:background="@drawable/oval_box"
-        android:layout_gravity="end"
-        android:onClick="buttonClicked"/>
+        <Button
+            android:id="@+id/bPos2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="5.5dp"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_location_on_black_48dp"
+            android:onClick="buttonClicked"
+            android:background="@drawable/oval_box"/>
     </LinearLayout>
 </fragment>
