@@ -4,12 +4,12 @@
         <item
             android:id="@+id/item1"
             android:checked="false"
-            android:title="Lista posti salvati">
+            android:title="POSTI SALVATI">
         </item>
         <item
             android:id="@+id/item2"
             android:checked="false"
-            android:title="Lista posti preferiti">
+            android:title="POSTI PREFERITI">
         </item>
     </group>
 </menu>
