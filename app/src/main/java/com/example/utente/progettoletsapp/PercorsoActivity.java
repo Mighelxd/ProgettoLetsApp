@@ -163,7 +163,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
 
     public void bCalcPer() {
         origin = new String(Double.toString(mLastLocation.getLatitude()) + "," + Double.toString(mLastLocation.getLongitude()));
-        destination = new String(getIntent().getStringExtra("longitude") + "," + getIntent().getStringExtra("latitude"));
+        destination = new String(getIntent().getStringExtra("latitude") + "," + getIntent().getStringExtra("longitude"));
         try {
             new DirectionFinder(this, origin, destination).execute();
         } catch (UnsupportedEncodingException e) {
