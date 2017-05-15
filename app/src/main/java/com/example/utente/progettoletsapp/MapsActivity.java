@@ -31,6 +31,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
@@ -62,9 +63,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
     private Location mLastLocation;
-    private double lat, lon;
+    private Button b1,b2,b3;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
-    private Marker mCurrLocationMarker;
     int cont = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
         menu = (NavigationView) findViewById(R.id.menuLaterale);
+        b1= (Button) findViewById(R.id.bPos);
+        b2= (Button) findViewById(R.id.bSave);
+        b3= (Button) findViewById(R.id.bHelp);
         NavigationView.OnNavigationItemSelectedListener ls = new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -104,6 +107,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
         txt.setOnEditorActionListener(ls1);
+        View.OnLongClickListener ls2=new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                switch(v.getId())
+                {
+                    case R.id.bSave:
+                        Toast.makeText(MapsActivity.this, "Salva luogo.", Toast.LENGTH_SHORT).show();break;
+                    case R.id.bPos:
+                        Toast.makeText(MapsActivity.this, "Tua posizione.", Toast.LENGTH_SHORT).show();break;
+                    case R.id.bHelp:
+                        Toast.makeText(MapsActivity.this, "Visualizza guida.", Toast.LENGTH_SHORT).show();break;
+                }
+                return true;
+            }
+        };
+        b1.setOnLongClickListener(ls2);
+        b2.setOnLongClickListener(ls2);
+        b3.setOnLongClickListener(ls2);
 
 
     }
