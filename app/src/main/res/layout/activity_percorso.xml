@@ -8,10 +8,11 @@
     tools:context="com.example.utente.progettoletsapp.PercorsoActivity" >
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/bPos2"
@@ -55,14 +56,27 @@
             android:layout_marginTop="10dp"
             android:drawableStart="@drawable/ic_help_black_48dp"
             android:onClick="buttonClicked"
-            android:background="@drawable/oval_box" />
+            android:background="@drawable/oval_box"
+            android:layout_marginRight="10dp"/>
+        <Button
+            android:id="@+id/bPos3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="end"
+            android:paddingLeft="5.5dp"
+            android:layout_marginTop="10dp"
+            android:drawableStart="@drawable/ic_location_on_black_48dp"
+            android:onClick="buttonClicked"
+            android:background="@drawable/oval_box"
+            android:layout_marginRight="10dp"/>
         <TextView
+            android:id="@+id/txt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txt2"
+            android:textColor="#00ff11"
             android:textStyle="bold"
-            android:textColor="#00FF00"
-            android:text=""
-            />
+            android:layout_marginTop="160dp"
+            android:layout_gravity="center"/>
+
     </LinearLayout>
 </fragment>
