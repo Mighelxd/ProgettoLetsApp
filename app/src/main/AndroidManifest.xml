@@ -49,7 +49,8 @@
         <activity
             android:name=".PercorsoActivity"
             android:label="@string/title_activity_percorso" />
-        <activity android:name=".InformationActivity"></activity>
+        <activity android:name=".InformationActivity" />
+        <activity android:name=".HelpActivity"></activity>
     </application>
 
 </manifest>

@@ -158,6 +158,9 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             case R.id.bTornHome:
                 bTornHome();
                 break;
+            case R.id.bHelp:
+                bHelp();
+                break;
 
         }
 
@@ -180,6 +183,10 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
 
     public void bTornHome() {
         Intent i=new Intent(PercorsoActivity.this,MapsActivity.class);
+        startActivity(i);
+    }
+    public void bHelp()
+    {   Intent i=new Intent(PercorsoActivity.this,HelpActivity.class);
         startActivity(i);
     }
 

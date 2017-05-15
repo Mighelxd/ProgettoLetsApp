@@ -84,6 +84,17 @@
                 android:drawableStart="@drawable/ic_my_location_black_48dp"
                 android:onClick="buttonClicked"
                 android:background="@drawable/oval_box"/>
+            <Button
+                android:id="@+id/bHelp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="5.5dp"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_help_black_48dp"
+                android:onClick="buttonClicked"
+                android:background="@drawable/oval_box"/>
 
         </LinearLayout>
     </fragment>

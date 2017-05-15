@@ -126,6 +126,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case R.id.bPos:
                 bPos();
                 break;
+            case R.id.bHelp:
+                bHelp();
+                break;
         }
 
     }
@@ -170,6 +173,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     public void inform()
     {   Intent i=new Intent(MapsActivity.this,InformationActivity.class);
+        startActivity(i);
+    }
+    public void bHelp()
+    {   Intent i=new Intent(MapsActivity.this,HelpActivity.class);
         startActivity(i);
     }
 
