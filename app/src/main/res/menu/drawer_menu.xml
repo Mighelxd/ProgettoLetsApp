@@ -2,16 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
+            android:icon="@drawable/ic_list_black_24dp"
             android:id="@+id/item1"
             android:checked="false"
             android:title="POSTI SALVATI">
         </item>
         <item
+            android:icon="@drawable/ic_star_rate_black_18dp"
             android:id="@+id/item2"
             android:checked="false"
             android:title="POSTI PREFERITI">
         </item>
         <item
+            android:icon="@drawable/ic_info_black_24dp"
             android:id="@+id/item3"
             android:checked="false"
             android:title="INFORMAZIONI">
