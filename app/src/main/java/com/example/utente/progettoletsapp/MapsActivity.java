@@ -31,6 +31,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -95,7 +96,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
         menu.setNavigationItemSelectedListener(ls);
-        EditText txt = (EditText) findViewById(R.id.editText);
+        AutoCompleteTextView txt = (AutoCompleteTextView) findViewById(R.id.editText);
+        txt.setThreshold(2);
+        txt.setAdapter(new ArrayAdapter<String>(MapsActivity.this,android.R.layout.simple_list_item_1,SetSuggerimenti.SUGG(MapsActivity.this)));
         TextView.OnEditorActionListener ls1 = new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
