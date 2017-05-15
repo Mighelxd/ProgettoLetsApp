@@ -46,6 +46,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     private Location mLastLocation;
     private String origin;
     private String destination;
+    private String nDest;
     private Double lat,lon;
     private int cont = 0;
     private List<Marker> originMarkers = new ArrayList<>();
@@ -95,6 +96,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         lat=Double.parseDouble(getIntent().getStringExtra("latitude"));
         lon=Double.parseDouble(getIntent().getStringExtra("longitude"));
         destination = new String(Double.toString(lat)+","+Double.toString(lon));
+        nDest=getIntent().getStringExtra("name");
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -121,7 +123,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
 
         LatLng latLng = new LatLng(lat, lon);
         destinationMarkers.add(mMap.addMarker(new MarkerOptions()
-                .title("destinazione")
+                .title(nDest)
                 .position(latLng)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
@@ -227,7 +229,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
 
 
             destinationMarkers.add(mMap.addMarker(new MarkerOptions()
-                    .title(route.endAddress)
+                    .title(nDest)
                     .position(route.endLocation)));
 
             PolylineOptions polylineOptions = new PolylineOptions().

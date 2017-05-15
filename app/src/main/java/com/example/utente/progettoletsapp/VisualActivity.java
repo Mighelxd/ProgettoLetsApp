@@ -117,6 +117,7 @@ public class VisualActivity extends AppCompatActivity {
                 Intent i=new Intent(VisualActivity.this,PercorsoActivity.class);
                 i.putExtra("latitude",lat);
                 i.putExtra("longitude",lon);
+                i.putExtra("name",nome);
                 startActivity(i);
             }
     }
