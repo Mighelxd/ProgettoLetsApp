@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,7 +26,8 @@ public class RicercaActivity extends AppCompatActivity {
     SQLiteDatabase db;
 
     private String testoRic;
-    private EditText edRic;
+    private AutoCompleteTextView edRic;
+
 
 
     private String nomiRic[];
@@ -41,7 +43,13 @@ public class RicercaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ricerca);
         codRichiesta = getIntent().getIntExtra("codRichiesta", 1);
-        edRic = (EditText) findViewById(R.id.editText);
+        edRic = (AutoCompleteTextView) findViewById(R.id.editText);
+        edRic.setThreshold(2);
+        edRic.setAdapter(new ArrayAdapter<String>(RicercaActivity.this,android.R.layout.simple_list_item_1,SetSuggerimenti.SUGG(this)));
+
+        databasePosti = new DatabasePosti(RicercaActivity.this);
+        db = databasePosti.getReadableDatabase();
+
 
         edRic.setText(getIntent().getStringExtra("edRic"));
         TextView.OnEditorActionListener ls1 = new TextView.OnEditorActionListener() {
@@ -53,8 +61,7 @@ public class RicercaActivity extends AppCompatActivity {
         };
         edRic.setOnEditorActionListener(ls1);
 
-        databasePosti = new DatabasePosti(RicercaActivity.this);
-        db = databasePosti.getReadableDatabase();
+
 
         lista = (ListView) findViewById(R.id.listaPosti);
         numVoci = 0;
@@ -69,7 +76,11 @@ public class RicercaActivity extends AppCompatActivity {
         };
         lista.setOnItemClickListener(ls2);
 
+
+
     }
+
+
 
     public void buttonClicked(View v) {
         bSearch();
