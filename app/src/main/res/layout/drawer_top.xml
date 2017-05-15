@@ -4,15 +4,4 @@
     android:layout_height="260dp"
     android:background="@drawable/imgmenlat">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:paddingTop="15dp"
-        android:id="@+id/txt1"/>
-
 </LinearLayout>
