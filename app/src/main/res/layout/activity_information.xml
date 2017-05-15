@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Finalità app"
+            android:text="Finalità dell'app"
             android:textSize="30dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
@@ -34,8 +34,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="L’app consente di salvare tutti i posti interessanti che si visitano. Con la loro posizione si salvano anche un titolo, tipo di posto e una breve descrizione con la possibilità di poter assegnare un voto in stelle da 1 a 5.
-E' possibile accedere a un menu laterale dove è possibile visualizzare tutti i posti ordinati in base alla valutazione, visualizzare tutti i posti preferiti (con valutazione 4 o 5 stelle), modificare qualsiasi posto, cancellarlo e visualizzarne la posizione, con la possibilità di calcolare un percorso che va dalla propria posizione al momento del calcolo alla posizione della località salvata."
+            android:text="Il fine dell'app è quello di consentire il salvataggio di tutti i posti interessanti che si visitano. Con la loro posizione si salvano: un titolo, il tipo di posto (con relativo sottotipo, se possibile) e una breve descrizione con la possibilità di poter assegnare un voto in stelle da 1 a 5.
+E' possibile, poi, visualizzare tutti i posti salvati, ordinati in base alla valutazione, visualizzare tutti i posti preferiti (con valutazione 4 o 5 stelle), modificare qualsiasi posto, cancellarlo e visualizzarne la posizione, con la possibilità di calcolare un percorso che va dalla propria posizione al momento del calcolo alla posizione della località salvata."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
