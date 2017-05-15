@@ -14,6 +14,7 @@ import android.os.StrictMode;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -41,6 +42,7 @@ public class SalvaLuogoActivity extends Activity {
     private String descrizione;
     private String Nstelle;
     private String cod_Stipo;
+    private Button b;
 
 
     @Override
@@ -56,7 +58,6 @@ public class SalvaLuogoActivity extends Activity {
         String tipi[] = new String[DatabasePosti.LUN_TIP];
         databasePosti = new DatabasePosti(this);
         db = databasePosti.getReadableDatabase();
-
         String queryTipi = "SELECT descrizione FROM tipo;";
 
         cursor = db.rawQuery(queryTipi, null);
@@ -99,6 +100,16 @@ public class SalvaLuogoActivity extends Activity {
         spinnerSTipo.setOnItemSelectedListener(ls2);
 
         if (getIntent().getIntExtra("codRichiesta", 0) == 2) inizMod();
+
+        b=(Button) findViewById(R.id.bSave2);
+        View.OnLongClickListener ls3=new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(SalvaLuogoActivity.this, "Salva", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        };
+        b.setOnLongClickListener(ls3);
 
     }
 

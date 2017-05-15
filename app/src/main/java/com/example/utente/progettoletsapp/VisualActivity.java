@@ -27,6 +27,7 @@ public class VisualActivity extends AppCompatActivity {
     private String Nstelle;
     private String lon;
     private String lat;
+    private Button b1,b2,b3;
 
     private TextView txtnom,txttip,txtstip,txtds,txtdescr;
 
@@ -49,6 +50,28 @@ public class VisualActivity extends AppCompatActivity {
         db=databasePosti.getReadableDatabase();
 
         visualizzaDati();
+
+        b1= (Button) findViewById(R.id.bPer);
+        b2= (Button) findViewById(R.id.bMod);
+        b3= (Button) findViewById(R.id.bCanc);
+        View.OnLongClickListener ls2=new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                switch(v.getId())
+                {
+                    case R.id.bPer:
+                        Toast.makeText(VisualActivity.this, "Poszione sulla mappa.", Toast.LENGTH_SHORT).show();break;
+                    case R.id.bMod:
+                        Toast.makeText(VisualActivity.this, "Modifica.", Toast.LENGTH_SHORT).show();break;
+                    case R.id.bCanc:
+                        Toast.makeText(VisualActivity.this, "Cancella.", Toast.LENGTH_SHORT).show();break;
+                }
+                return true;
+            }
+        };
+        b1.setOnLongClickListener(ls2);
+        b2.setOnLongClickListener(ls2);
+        b3.setOnLongClickListener(ls2);
     }
 
     private void visualizzaDati() {

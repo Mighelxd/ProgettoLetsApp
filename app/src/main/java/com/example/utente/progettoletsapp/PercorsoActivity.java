@@ -14,6 +14,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
+    private Button b1,b2,b3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,28 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        b1= (Button) findViewById(R.id.bPos2);
+        b2= (Button) findViewById(R.id.bCalcPer);
+        b3= (Button) findViewById(R.id.bTornHome);
+        View.OnLongClickListener ls2=new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                switch(v.getId())
+                {
+                    case R.id.bPos2:
+                        Toast.makeText(PercorsoActivity.this, "Tua posizione.", Toast.LENGTH_SHORT).show();break;
+                    case R.id.bCalcPer:
+                        Toast.makeText(PercorsoActivity.this, "Calcola percorso.", Toast.LENGTH_SHORT).show();break;
+                    case R.id.bTornHome:
+                        Toast.makeText(PercorsoActivity.this, "Home.", Toast.LENGTH_SHORT).show();break;
+                }
+                return true;
+            }
+        };
+        b1.setOnLongClickListener(ls2);
+        b2.setOnLongClickListener(ls2);
+        b3.setOnLongClickListener(ls2);
     }
 
 

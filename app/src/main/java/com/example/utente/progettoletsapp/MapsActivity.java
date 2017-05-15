@@ -77,9 +77,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         lmenu = (DrawerLayout) findViewById(R.id.drawer_layout);
         menu = (NavigationView) findViewById(R.id.menuLaterale);
-        b1= (Button) findViewById(R.id.bPos);
-        b2= (Button) findViewById(R.id.bSave);
-        b3= (Button) findViewById(R.id.bHelp);
         NavigationView.OnNavigationItemSelectedListener ls = new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -107,6 +104,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
         txt.setOnEditorActionListener(ls1);
+        b1= (Button) findViewById(R.id.bPos);
+        b2= (Button) findViewById(R.id.bSave);
+        b3= (Button) findViewById(R.id.bHelp);
         View.OnLongClickListener ls2=new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
