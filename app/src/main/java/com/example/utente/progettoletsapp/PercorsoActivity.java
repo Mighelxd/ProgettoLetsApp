@@ -55,7 +55,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
-    private Button b1,b2,b3;
+    private Button b1,b2,b3,b4;
     private TextView txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +69,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         b1= (Button) findViewById(R.id.bPos2);
         b2= (Button) findViewById(R.id.bCalcPer);
         b3= (Button) findViewById(R.id.bTornHome);
+        b4= (Button) findViewById(R.id.bHelp);
         View.OnLongClickListener ls2=new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -80,6 +81,8 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
                         Toast.makeText(PercorsoActivity.this, "Calcola percorso.", Toast.LENGTH_SHORT).show();break;
                     case R.id.bTornHome:
                         Toast.makeText(PercorsoActivity.this, "Home.", Toast.LENGTH_SHORT).show();break;
+                    case R.id.bHelp:
+                        Toast.makeText(PercorsoActivity.this, "Visualizza guida.", Toast.LENGTH_SHORT).show();break;
                 }
                 return true;
             }
