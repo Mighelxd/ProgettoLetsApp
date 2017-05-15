@@ -10,8 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabasePosti extends SQLiteOpenHelper {
 
-    public static final int LUN_TIP=8;
-    public static final int LUN_STIP[]={6,2,3,5,1,6,4,1};
+    public static final int LUN_TIP=9;
+    public static final int LUN_STIP[]={6,2,3,5,1,6,4,1,4};
 
     public static final String NOMEDB="PostiDiInteresse";//nome database
 
@@ -42,7 +42,7 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "FOREIGN KEY(cod_Stipo) REFERENCES sottotipo(codice));";
         String insTipo="INSERT INTO tipo (descrizione) VALUES" +
                 "('Pub/Ristorante/Pizzeria'),('Club'),('Bar/Lounge bar')," +
-                "('Località storico/culturale'),('Parcheggio'),('Negozio'),('Svago'),('Altro');";
+                "('Località storico/culturale'),('Parcheggio'),('Negozio'),('Svago'),('Altro'),('Scuola');";
         String insSTipo="INSERT INTO sottotipo (descrizione,cod_tipo) VALUES" +
                 "('Ristorante',1),('Pub',1),('Pizzeria',1),('Ristorante/Pizzeria',1),('Paninoteca',1),('Fastfood',1)," +
                 "('Discoteca',2),('Disco-bar',2)," +
@@ -50,8 +50,8 @@ public class DatabasePosti extends SQLiteOpenHelper {
                 "('Museo',4),('Biblioteca',4),('Statua',4),('Palazzo',4),('Castello',4)," +
                 "('Parcheggio',5)," +
                 "('Supermercato',6),('Macelleria',6),('Pescheria',6),('Salumeria',6),('Libreria',6),('Negozio abbigliamento',6)," +
-                "('Cinema',7),('Sala giochi',7),('Centro scommesse',7),('Centro Sportivo',7)," +
-                "('Altro',8);";
+                "('Cinema',7),('Sala giochi',7),('Centro scommesse',7),('Centro sportivo',7)," +
+                "('Altro',8),('Scuola dell infanzia',9),('Scuola primaria',9),('Scuola secondaria di primo grado',9),('Scuola secondaria di secondo grado o superiore',9);";
 
         db.execSQL(tabTipo);
         db.execSQL(tabSTipo);
