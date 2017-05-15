@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.TypedArrayUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -49,14 +50,15 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     private String origin;
     private String destination;
     private String nDest;
-    private Double lat,lon;
+    private Double lat, lon;
     private int cont = 0;
     private List<Marker> originMarkers = new ArrayList<>();
     private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
-    private Button b1,b2,b3,b4;
+    private Button b1, b2, b3, b4;
     private TextView txt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,24 +67,31 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        ArrayList<String> ciao = new ArrayList<String>();
 
-        b1= (Button) findViewById(R.id.bPos2);
-        b2= (Button) findViewById(R.id.bCalcPer);
-        b3= (Button) findViewById(R.id.bTornHome);
-        b4= (Button) findViewById(R.id.bHelp);
-        View.OnLongClickListener ls2=new View.OnLongClickListener() {
+        b1 = (Button) findViewById(R.id.bPos2);
+        b2 = (Button) findViewById(R.id.bCalcPer);
+        b3 = (Button) findViewById(R.id.bTornHome);
+        b4 = (Button) findViewById(R.id.bHelp);
+        View.OnLongClickListener ls2 = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                switch(v.getId())
-                {
+                switch (v.getId()) {
                     case R.id.bPos2:
-                        Toast.makeText(PercorsoActivity.this, "Tua posizione.", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(PercorsoActivity.this, "Tua posizione.", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.bPos3:
+                        Toast.makeText(PercorsoActivity.this, "Posizione destinazione.", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.bCalcPer:
-                        Toast.makeText(PercorsoActivity.this, "Calcola percorso.", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(PercorsoActivity.this, "Calcola percorso.", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.bTornHome:
-                        Toast.makeText(PercorsoActivity.this, "Home.", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(PercorsoActivity.this, "Home.", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.bHelp:
-                        Toast.makeText(PercorsoActivity.this, "Visualizza guida.", Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(PercorsoActivity.this, "Visualizza guida.", Toast.LENGTH_SHORT).show();
+                        break;
                 }
                 return true;
             }
@@ -90,7 +99,8 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         b1.setOnLongClickListener(ls2);
         b2.setOnLongClickListener(ls2);
         b3.setOnLongClickListener(ls2);
-        txt=(TextView)findViewById(R.id.txt2);
+        b4.setOnLongClickListener(ls2);
+        txt = (TextView) findViewById(R.id.txt2);
     }
 
 
@@ -122,10 +132,10 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
-        lat=Double.parseDouble(getIntent().getStringExtra("latitude"));
-        lon=Double.parseDouble(getIntent().getStringExtra("longitude"));
-        destination = new String(Double.toString(lat)+","+Double.toString(lon));
-        nDest=getIntent().getStringExtra("name");
+        lat = Double.parseDouble(getIntent().getStringExtra("latitude"));
+        lon = Double.parseDouble(getIntent().getStringExtra("longitude"));
+        destination = new String(Double.toString(lat) + "," + Double.toString(lon));
+        nDest = getIntent().getStringExtra("name");
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -192,6 +202,8 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
             case R.id.bHelp:
                 bHelp();
                 break;
+            case R.id.bPos3:
+                bPos2();
 
         }
 
@@ -199,6 +211,12 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
 
     public void bPos() {
         LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+    }
+
+    public void bPos2() {
+        LatLng latLng = new LatLng(lat,lon);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
     }
@@ -214,11 +232,12 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     }
 
     public void bTornHome() {
-        Intent i=new Intent(PercorsoActivity.this,MapsActivity.class);
+        Intent i = new Intent(PercorsoActivity.this, MapsActivity.class);
         startActivity(i);
     }
-    public void bHelp()
-    {   Intent i=new Intent(PercorsoActivity.this,HelpActivity.class);
+
+    public void bHelp() {
+        Intent i = new Intent(PercorsoActivity.this, HelpActivity.class);
         startActivity(i);
     }
 
@@ -234,9 +253,9 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         }
 
         if (destinationMarkers != null) {
-                for (Marker marker : destinationMarkers) {
-                    marker.remove();
-                }
+            for (Marker marker : destinationMarkers) {
+                marker.remove();
+            }
         }
 
         if (polylinePaths != null) {
@@ -271,7 +290,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
                 polylineOptions.add(route.points.get(i));
 
             polylinePaths.add(mMap.addPolyline(polylineOptions));
-            txt.setText("Distanza: "+route.distance.text+"\nDurata viaggio: "+route.duration.text);
+            txt.setText("Distanza: " + route.distance.text + "\nDurata viaggio: " + route.duration.text);
         }
     }
 
