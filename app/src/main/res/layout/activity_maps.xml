@@ -39,7 +39,7 @@
                     android:paddingLeft="3dp"
                     android:onClick="buttonClicked" />
 
-                <EditText
+                <AutoCompleteTextView
                     android:id="@+id/editText"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

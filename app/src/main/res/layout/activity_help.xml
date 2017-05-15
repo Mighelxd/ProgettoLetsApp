@@ -33,7 +33,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="Nella schermata home è presente la mappa che mostra la posizione corrente, poi troviamo la
+barra di ricerca che consente di effettuare una ricerca sui posti salvati a partire dal suo nome, tipo o sottotipo
+oppure ricercando parole chiave che posso essere presenti nella descrizione del posto.In alto a destra si trova poi il
+pulsante di accesso al menu laterale e i pulsanti per salvare il posto corrente oppure per mostrare la nostra posizione sulla mappa."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
@@ -52,7 +55,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="Qui è possibile accedere alla lista dei posti salvati o a quella dei posti a cui si è
+un voto tra le 4 e le 5 stelle e alle informazioni dell'app."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
@@ -71,7 +75,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="Qui è possibile settare il nome del posto da memorizzare tipo ed eventualmente il sottotipo,
+una breve descrizione di ciò che si vuole ricordare del posto e la valutazione da 1 a 5 stelle è quindi possibile salvare
+con il pulsante 'salva'."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
@@ -90,7 +96,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="Questa è la schermata in cui vengono visualizzate le informazioni relative ai posti
+salvati e sono presenti un pulsante per cancellare il posto in questione, per modificarne le informazioni e per
+visualizzarne la posizione sulla mappa."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
