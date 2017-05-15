@@ -33,10 +33,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nella schermata home è presente la mappa che mostra la posizione corrente, poi troviamo la
-barra di ricerca che consente di effettuare una ricerca sui posti salvati a partire dal suo nome, tipo o sottotipo
-oppure ricercando parole chiave che posso essere presenti nella descrizione del posto.In alto a destra si trova poi il
-pulsante di accesso al menu laterale e i pulsanti per salvare il posto corrente oppure per mostrare la nostra posizione sulla mappa."
+            android:text="Nella schermata home è presente la mappa che mostra la posizione corrente, la
+barra di ricerca che consente di effettuare una ricerca sui posti salvati a partire dal suo nome, tipo o sottotipo oppure ricercando parole chiave che possono essere presenti nella descrizione del posto.
+In alto a sinistra si trova il
+pulsante di accesso al menu laterale, mentre lateralmente si trovano i pulsanti per salvare il posto oppure per ritornare alla nostra posizione sulla mappa."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
@@ -55,8 +55,7 @@ pulsante di accesso al menu laterale e i pulsanti per salvare il posto corrente 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Qui è possibile accedere alla lista dei posti salvati o a quella dei posti a cui si è
-un voto tra le 4 e le 5 stelle e alle informazioni dell'app."
+            android:text="Qui è possibile accedere alla lista dei posti salvati o a quella dei posti a cui è stato assegnato un voto tra le 4 e le 5 stelle (Preferiti) e alle informazioni dell'app."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
@@ -75,9 +74,9 @@ un voto tra le 4 e le 5 stelle e alle informazioni dell'app."
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Qui è possibile settare il nome del posto da memorizzare tipo ed eventualmente il sottotipo,
-una breve descrizione di ciò che si vuole ricordare del posto e la valutazione da 1 a 5 stelle è quindi possibile salvare
-con il pulsante 'salva'."
+            android:text="Qui è possibile settare il nome del posto da memorizzare, tipo ed eventualmente il sottotipo,
+una breve descrizione di ciò che si vuole ricordare del posto e la valutazione da 1 a 5 stelle.
+E' quindi possibile salvare con il pulsante 'salva' (bottone con simbolo di salvataggio)."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
@@ -96,8 +95,7 @@ con il pulsante 'salva'."
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Questa è la schermata in cui vengono visualizzate le informazioni relative ai posti
-salvati e sono presenti un pulsante per cancellare il posto in questione, per modificarne le informazioni e per
+            android:text="Questa è la schermata in cui vengono visualizzate le informazioni relative ai posti salvati e sono presenti un pulsante per cancellare il posto in questione, per modificarne le informazioni e per
 visualizzarne la posizione sulla mappa."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
@@ -117,9 +115,8 @@ visualizzarne la posizione sulla mappa."
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Qui è possibile visualizzare la posizione del posto sulla mappa e sono presenti il pulsante per
-calcolare il percorso dalla posizione corrente al posto in questione, il pulsante per andare sulla mappa alla posizione corrente
-e il pulsante per tornare alla Home."
+            android:text="Qui è possibile visualizzare la posizione del posto sulla mappa e, sono presenti lateralmente, il pulsante per
+calcolare il percorso dalla posizione corrente al posto in questione, un pulsante per andare sulla mappa alla posizione corrente, un pulsante per tornare alla Home e un pulsante per ritornare alla posizione del posto salvato."
             android:textSize="20dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
