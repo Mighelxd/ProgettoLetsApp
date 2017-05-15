@@ -56,7 +56,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     private List<Marker> destinationMarkers = new ArrayList<>();
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
-    private Button b1, b2, b3, b4;
+    private Button b1, b2, b3, b4, b5;
     private TextView txt;
 
     @Override
@@ -73,6 +73,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         b2 = (Button) findViewById(R.id.bCalcPer);
         b3 = (Button) findViewById(R.id.bTornHome);
         b4 = (Button) findViewById(R.id.bHelp);
+        b5 = (Button) findViewById(R.id.bPos3);
         View.OnLongClickListener ls2 = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -100,6 +101,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         b2.setOnLongClickListener(ls2);
         b3.setOnLongClickListener(ls2);
         b4.setOnLongClickListener(ls2);
+        b5.setOnLongClickListener(ls2);
         txt = (TextView) findViewById(R.id.txt2);
     }
 
@@ -216,7 +218,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     }
 
     public void bPos2() {
-        LatLng latLng = new LatLng(lat,lon);
+        LatLng latLng = new LatLng(lat, lon);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
     }
