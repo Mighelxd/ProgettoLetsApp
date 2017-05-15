@@ -32,6 +32,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.vision.text.Text;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
     private List<Polyline> polylinePaths = new ArrayList<>();
     private ProgressDialog progressDialog;
     private Button b1,b2,b3;
-
+    private TextView txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +87,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         b1.setOnLongClickListener(ls2);
         b2.setOnLongClickListener(ls2);
         b3.setOnLongClickListener(ls2);
+        txt=(TextView)findViewById(R.id.txt2);
     }
 
 
@@ -205,6 +207,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
     }
 
     public void bTornHome() {
@@ -265,6 +268,7 @@ public class PercorsoActivity extends FragmentActivity implements OnMapReadyCall
                 polylineOptions.add(route.points.get(i));
 
             polylinePaths.add(mMap.addPolyline(polylineOptions));
+            txt.setText("Distanza: "+route.distance.text+"\nDurata viaggio: "+route.duration.text);
         }
     }
 
